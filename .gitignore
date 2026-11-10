@@ -38,6 +38,8 @@ venv.bak/
 # Database
 *.sqlite3
 *.db
+*.db-shm
+*.db-wal
 !seed_data.sql
 
 # Testing & Coverage

@@ -122,3 +122,4 @@ if __name__ == "__main__":
     from decimal import Decimal
     Number = float
     main()
+
