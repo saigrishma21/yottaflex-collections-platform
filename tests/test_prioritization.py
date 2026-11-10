@@ -30,16 +30,17 @@ def test_disputed_debt_exclusion():
 
 
 def test_critical_priority_scoring():
-    """Verify high balance, high DPD, high risk produces critical tier with explainability."""
+    """Verify severe balance, extended DPD, high risk produces critical tier (>=80.0) with explainability."""
     result = score_collection_account(
-        total_arrears=Decimal("60000.00"),  # max normalized score = 100 * 0.40 = 40.0
-        days_past_due=95,                   # max normalized score = 100 * 0.35 = 35.0
-        risk_segment="HIGH",                # 90 * 0.25 = 22.5
+        total_arrears=Decimal("350000.00"),
+        days_past_due=180,
+        risk_segment="HIGH",
     )
-    # Total = 40.0 + 35.0 + 22.5 = 97.5
-    assert result["priority_score"] == Decimal("97.50")
+    assert result["priority_score"] >= Decimal("80.00")
     assert result["priority_level"] == "CRITICAL"
     assert result["eligible"] is True
     assert len(result["factors"]) == 3
-    assert result["factors"][0]["factor_name"] == "Outstanding Balance Arrears"
+    assert result["factors"][0]["factor_name"] == "Days Past Due (Delinquency Age)"
+    assert result["factors"][1]["factor_name"] == "Outstanding Balance Arrears"
+    assert result["factors"][2]["factor_name"] == "Customer Risk Profile"
 

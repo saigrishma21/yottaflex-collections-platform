@@ -6,9 +6,9 @@ export default function KPICards({ summary }) {
 
   const cards = [
     {
-      title: 'Total Loan Portfolio',
-      value: summary.total_loans.toLocaleString(),
-      subtitle: `${summary.total_customers.toLocaleString()} active borrowers`,
+      title: 'Loan Portfolio',
+      value: `${summary.total_loans.toLocaleString()} Loans`,
+      subtitle: `${summary.total_customers.toLocaleString()} Registered Customers`,
       icon: CreditCard,
       color: 'sky',
     },
@@ -29,7 +29,7 @@ export default function KPICards({ summary }) {
     {
       title: 'Critical Priority Tier',
       value: summary.critical_cases_count.toLocaleString(),
-      subtitle: 'Explainable Score ≥ 80.0',
+      subtitle: 'Active cases (Score ≥ 80.0)',
       icon: AlertCircle,
       color: 'amber',
     },

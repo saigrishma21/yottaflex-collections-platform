@@ -26,7 +26,10 @@ def get_dashboard_summary(db: Session = Depends(get_db)):
     total_loans = db.query(func.count(Loan.loan_id)).scalar() or 0
     total_arrears = db.query(func.sum(CollectionCase.outstanding_amount)).scalar() or Decimal("0.00")
     active_cases = db.query(func.count(CollectionCase.case_id)).filter(CollectionCase.case_status.in_(["OPEN", "CONTACT_SCHEDULED", "PROMISE_ACTIVE"])).scalar() or 0
-    critical_cases = db.query(func.count(CollectionCase.case_id)).filter(CollectionCase.priority_level == "CRITICAL").scalar() or 0
+    critical_cases = db.query(func.count(CollectionCase.case_id)).filter(
+        CollectionCase.case_status.in_(["OPEN", "CONTACT_SCHEDULED", "PROMISE_ACTIVE"]),
+        CollectionCase.priority_level == "CRITICAL"
+    ).scalar() or 0
 
     # Promise fulfillment rate
     total_promises = db.query(func.count(PromiseToPay.promise_id)).scalar() or 0

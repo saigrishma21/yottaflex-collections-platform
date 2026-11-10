@@ -40,17 +40,28 @@ Prior to calculating priority scores, the system applies non-negotiable eligibil
 3. **Hardship Arrangement**: If $\text{is\_hardship} = \text{True}$, standard aggressive outreach is replaced with hardship counseling workflows.
 
 ### 2.2 Composite Priority Score Formula
-Eligible accounts are ranked on a 0–100 scale using an explainable multi-factor formula:
+Eligible accounts are ranked on a continuous 0–100 scale using an explainable multi-factor formula:
 
-$$\text{Priority Score} = \left(S_{\text{balance}} \times 0.40\right) + \left(S_{\text{DPD}} \times 0.35\right) + \left(S_{\text{risk}} \times 0.25\right)$$
+$$\text{Priority Score} = \left(S_{\text{DPD}} \times 0.40\right) + \left(S_{\text{balance}} \times 0.35\right) + \left(S_{\text{risk}} \times 0.25\right)$$
 
 Where:
-* **Balance Component ($S_{\text{balance}}$)**:
-  $$S_{\text{balance}} = \min\left(100.0, \frac{\text{Total Arrears}}{50,000} \times 100.0\right)$$
-* **DPD Component ($S_{\text{DPD}}$)**:
-  $$S_{\text{DPD}} = \min\left(100.0, \frac{\text{DPD}}{90} \times 100.0\right)$$
-* **Customer Underwriting Risk Component ($S_{\text{risk}}$)**:
-  $$S_{\text{risk}} = \begin{cases} 90.0, & \text{risk\_segment} = \text{HIGH} \\ 50.0, & \text{risk\_segment} = \text{MEDIUM} \\ 20.0, & \text{risk\_segment} = \text{LOW} \end{cases}$$
+* **DPD Component ($S_{\text{DPD}}$, 40% Weight)**:
+  Continuous piecewise delinquency aging curve:
+  - $\text{DPD} \le 30$: $S_{\text{DPD}} = (\text{DPD} / 30) \times 35.0$
+  - $30 < \text{DPD} \le 90$: $S_{\text{DPD}} = 35.0 + ((\text{DPD} - 30) / 60) \times 35.0$
+  - $90 < \text{DPD} \le 270$: $S_{\text{DPD}} = 70.0 + ((\text{DPD} - 90) / 180) \times 25.0$
+  - $\text{DPD} > 270$: $S_{\text{DPD}} = 95.0 + \min(5.0, ((\text{DPD} - 270) / 90) \times 5.0)$
+* **Balance Component ($S_{\text{balance}}$, 35% Weight)**:
+  Continuous balance exposure curve spanning retail to high-ticket loans:
+  - $\text{Arrears} \le ₹20\text{k}$: $S_{\text{balance}} = (\text{Arrears} / 20000) \times 30.0$
+  - $₹20\text{k} < \text{Arrears} \le ₹80\text{k}$: $S_{\text{balance}} = 30.0 + ((\text{Arrears} - 20000) / 60000) \times 35.0$
+  - $₹80\text{k} < \text{Arrears} \le ₹300\text{k}$: $S_{\text{balance}} = 65.0 + ((\text{Arrears} - 80000) / 220000) \times 25.0$
+  - $\text{Arrears} > ₹300\text{k}$: $S_{\text{balance}} = 90.0 + \min(10.0, ((\text{Arrears} - 300000) / 700000) \times 10.0)$
+* **Customer Risk Component ($S_{\text{risk}}$, 25% Weight)**:
+  Incorporates base credit tier plus current balance-to-principal exposure ratio:
+  - $\text{HIGH}$: $S_{\text{risk}} = 80.0 + (\text{exposure\_ratio} \times 18.0)$
+  - $\text{MEDIUM}$: $S_{\text{risk}} = 45.0 + (\text{exposure\_ratio} \times 20.0)$
+  - $\text{LOW}$: $S_{\text{risk}} = 15.0 + (\text{exposure\_ratio} \times 20.0)$
 
 ### 2.3 Priority Level Mapping
 * **Critical**: $80.0 \le \text{Score} \le 100.0$
@@ -66,11 +77,11 @@ Every scored case exposes a factor attribution payload explaining why the score 
   "priority_score": 78.5,
   "priority_level": "HIGH",
   "factors": [
-    {"name": "Outstanding Arrears", "raw_value": "₹35,000", "weight": 0.40, "contribution": 28.0},
-    {"name": "Delinquency Duration", "raw_value": "58 Days (Bucket 2)", "weight": 0.35, "contribution": 22.5},
-    {"name": "Customer Risk Segment", "raw_value": "HIGH", "weight": 0.25, "contribution": 22.5}
+    {"factor": "Days Past Due (Delinquency Age)", "raw_value": "58 Days", "normalized_score": 51.3, "weight": 0.40, "contribution": 20.52},
+    {"factor": "Outstanding Balance Arrears", "raw_value": "₹35,000.00", "normalized_score": 38.8, "weight": 0.35, "contribution": 13.58},
+    {"factor": "Customer Risk Profile", "raw_value": "HIGH (Exposure: 45%)", "normalized_score": 88.1, "weight": 0.25, "contribution": 22.03}
   ],
-  "decision_summary": "High risk borrower with 58 DPD and substantial arrears requires high priority intervention."
+  "decision_summary": "HIGH priority: 58 DPD with ₹35,000.00 arrears on HIGH risk profile."
 }
 ```
 

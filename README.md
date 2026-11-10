@@ -94,9 +94,10 @@ $$\text{Total Arrears} = \sum_{i \in \text{Overdue Installments}} \left(\text{du
 Aging buckets: `CURRENT` (0 DPD), `BUCKET_1_30` (1–30 DPD), `BUCKET_31_60` (31–60 DPD), `BUCKET_61_90` (61–90 DPD), and `DEFAULT_90_PLUS` (90+ DPD).
 
 ### 4.2 Explainable Prioritization Algorithm
-Eligible delinquent loans are scored on a normalized 0–100 scale:
-$$\text{Score} = (S_{\text{balance}} \times 0.40) + (S_{\text{DPD}} \times 0.35) + (S_{\text{risk}} \times 0.25)$$
+Eligible delinquent loans are scored on a continuous normalized 0–100 scale:
+$$\text{Score} = (S_{\text{DPD}} \times 0.40) + (S_{\text{balance}} \times 0.35) + (S_{\text{risk}} \times 0.25)$$
 * **Statutory Pre-Filters**: Paid accounts ($\text{Arrears} = 0$) receive $\text{Score} = 0$ (`EXCLUDED_PAID`); disputed accounts receive $\text{Score} = 0$ (`ROUTED_DISPUTE_REVIEW`).
+* **Continuous Multi-Factor Curves**: Continuous piecewise functions for DPD (40%), arrears balance (35%), and customer risk ratio (25%) ensure natural ranking variance without premature score saturation.
 * **Attribution**: Every scored case exposes a JSON breakdown of weights, raw observed metrics, normalized scores, and factor contributions.
 
 ### 4.3 Fair Contact Scheduler

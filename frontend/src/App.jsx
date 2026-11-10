@@ -160,7 +160,7 @@ export default function App() {
                   Delinquent Accounts Prioritization Queue
                 </h2>
                 <p className="text-xs text-slate-500">
-                  Ranked by explainable multi-factor scoring algorithm (Balance 40%, DPD 35%, Risk 25%)
+                  Ranked by explainable multi-factor scoring algorithm (DPD 40%, Balance 35%, Risk 25%)
                 </p>
               </div>
             </div>

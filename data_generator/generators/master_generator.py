@@ -15,6 +15,27 @@ from data_generator.config import (
 )
 
 
+# Realistic Indian Geographic Clusters for 100% City-State-Pincode consistency
+INDIAN_GEOGRAPHIC_CLUSTERS = [
+    {"state": "Maharashtra", "cities": [("Mumbai", "400"), ("Pune", "411"), ("Nashik", "422"), ("Nagpur", "440"), ("Aurangabad", "431")]},
+    {"state": "Karnataka", "cities": [("Bengaluru", "560"), ("Mysuru", "570"), ("Hubballi", "580"), ("Mangaluru", "575")]},
+    {"state": "Delhi", "cities": [("New Delhi", "110"), ("North Delhi", "110"), ("South Delhi", "110")]},
+    {"state": "Tamil Nadu", "cities": [("Chennai", "600"), ("Coimbatore", "641"), ("Madurai", "625"), ("Salem", "636")]},
+    {"state": "Telangana", "cities": [("Hyderabad", "500"), ("Warangal", "506"), ("Nizamabad", "503")]},
+    {"state": "Gujarat", "cities": [("Ahmedabad", "380"), ("Surat", "395"), ("Vadodara", "390"), ("Rajkot", "360")]},
+    {"state": "West Bengal", "cities": [("Kolkata", "700"), ("Howrah", "711"), ("Durgapur", "713"), ("Siliguri", "734")]},
+    {"state": "Uttar Pradesh", "cities": [("Noida", "201"), ("Lucknow", "226"), ("Kanpur", "208"), ("Varanasi", "221"), ("Agra", "282")]},
+    {"state": "Rajasthan", "cities": [("Jaipur", "302"), ("Jodhpur", "342"), ("Kota", "324"), ("Udaipur", "313")]},
+    {"state": "Kerala", "cities": [("Kochi", "682"), ("Thiruvananthapuram", "695"), ("Kozhikode", "673")]},
+    {"state": "Haryana", "cities": [("Gurugram", "122"), ("Faridabad", "121"), ("Panipat", "132")]},
+    {"state": "Punjab", "cities": [("Ludhiana", "141"), ("Amritsar", "143"), ("Jalandhar", "144")]},
+    {"state": "Madhya Pradesh", "cities": [("Indore", "452"), ("Bhopal", "462"), ("Gwalior", "474")]},
+    {"state": "Andhra Pradesh", "cities": [("Visakhapatnam", "530"), ("Vijayawada", "520"), ("Guntur", "522")]},
+    {"state": "Bihar", "cities": [("Patna", "800"), ("Gaya", "823")]},
+    {"state": "Odisha", "cities": [("Bhubaneswar", "751"), ("Cuttack", "753")]},
+]
+
+
 def generate_master_records(scale_config, seed: int):
     """Generate master records: Customers, Accounts, Loans, and Contact Preferences."""
     fake = Faker("en_IN")
@@ -40,9 +61,14 @@ def generate_master_records(scale_config, seed: int):
         last_name = fake.last_name()
         email = f"{first_name.lower()}.{last_name.lower()}.{i}@example.com"
         phone = f"+919{random.randint(100000000, 999999999)}"
-        city = fake.city()
-        state = fake.state()
-        postal_code = fake.postcode()
+        
+        # Geographically consistent city, state, and postal code
+        cluster = random.choice(INDIAN_GEOGRAPHIC_CLUSTERS)
+        state = cluster["state"]
+        city, pin_prefix = random.choice(cluster["cities"])
+        pin_suffix = random.randint(100, 999)
+        postal_code = f"{pin_prefix}{pin_suffix}"
+
         risk_segment = random.choices(risk_segments, weights=risk_weights, k=1)[0]
 
         customer = Customer(
