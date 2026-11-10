@@ -50,6 +50,9 @@ FRONTEND_DIST = os.path.join(
     "dist",
 )
 if os.path.exists(FRONTEND_DIST):
+    ASSETS_DIR = os.path.join(FRONTEND_DIST, "assets")
+    if os.path.exists(ASSETS_DIR):
+        app.mount("/assets", StaticFiles(directory=ASSETS_DIR), name="assets")
     app.mount("/app", StaticFiles(directory=FRONTEND_DIST, html=True), name="frontend")
 
 
