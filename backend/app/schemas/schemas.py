@@ -160,3 +160,24 @@ class ComplianceViolationItem(BaseModel):
     entity_type: str
     description: str
     recommended_action: str
+
+
+class CreateCaseRequest(BaseModel):
+    first_name: str
+    last_name: str
+    phone: Optional[str] = "9876543210"
+    email: Optional[str] = None
+    city: Optional[str] = "Mumbai"
+    state: Optional[str] = "Maharashtra"
+    postal_code: Optional[str] = "400001"
+    risk_segment: str = "HIGH"
+    loan_type: str = "PERSONAL"
+    principal_amount: Decimal = Decimal("500000.00")
+    total_arrears: Decimal = Decimal("150000.00")
+    days_past_due: int = 120
+    target_priority: Optional[str] = None  # None for auto-score, or 'CRITICAL', 'HIGH', 'MEDIUM', 'LOW'
+
+
+class OverridePriorityRequest(BaseModel):
+    priority_level: str
+    reason: Optional[str] = "Manual tier override by operations analyst"
