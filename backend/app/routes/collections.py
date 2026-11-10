@@ -50,9 +50,6 @@ def list_cases(
         .join(Customer, CollectionCase.customer_id == Customer.customer_id)
     )
 
-    if priority and isinstance(priority, str) and priority.strip().upper() != "ALL":
-        query = query.filter(CollectionCase.priority_level == priority.strip().upper())
-    
     # Status filtering: Default to active collection pipeline (exclude settled/resolved/closed)
     if status and isinstance(status, str):
         if status.strip().upper() != "ALL":
@@ -60,20 +57,46 @@ def list_cases(
     else:
         query = query.filter(CollectionCase.case_status.notin_(["RESOLVED", "CLOSED"]))
 
-    if search and isinstance(search, str):
-        query = query.filter(
-            (CollectionCase.case_id.ilike(f"%{search}%"))
-            | (CollectionCase.loan_id.ilike(f"%{search}%"))
-            | (Customer.first_name.ilike(f"%{search}%"))
-            | (Customer.last_name.ilike(f"%{search}%"))
-        )
+    is_tier_filter = priority and isinstance(priority, str) and priority.strip().upper() != "ALL"
+    has_search = bool(search and isinstance(search, str) and search.strip())
 
-    results = (
-        query.order_by(desc(CollectionCase.priority_score))
-        .offset(skip)
-        .limit(limit)
-        .all()
-    )
+    if is_tier_filter or has_search:
+        if is_tier_filter:
+            query = query.filter(CollectionCase.priority_level == priority.strip().upper())
+        if has_search:
+            query = query.filter(
+                (CollectionCase.case_id.ilike(f"%{search}%"))
+                | (CollectionCase.loan_id.ilike(f"%{search}%"))
+                | (Customer.first_name.ilike(f"%{search}%"))
+                | (Customer.last_name.ilike(f"%{search}%"))
+            )
+        results = (
+            query.order_by(desc(CollectionCase.priority_score))
+            .offset(skip)
+            .limit(limit)
+            .all()
+        )
+    else:
+        # Cross-tier interleaved view for "ALL": presents a balanced representation
+        # across CRITICAL, HIGH, MEDIUM, and LOW tiers
+        per_tier_limit = (limit // 4) + 4
+        tier_results = {}
+        for tier in ["CRITICAL", "HIGH", "MEDIUM", "LOW"]:
+            t_query = query.filter(CollectionCase.priority_level == tier)
+            tier_results[tier] = (
+                t_query.order_by(desc(CollectionCase.priority_score))
+                .limit(per_tier_limit)
+                .all()
+            )
+        
+        interleaved = []
+        max_len = max(len(v) for v in tier_results.values()) if tier_results else 0
+        for i in range(max_len):
+            for tier in ["CRITICAL", "HIGH", "MEDIUM", "LOW"]:
+                if i < len(tier_results[tier]):
+                    interleaved.append(tier_results[tier][i])
+        
+        results = interleaved[skip : skip + limit]
 
     items = []
     for case, first, last in results:
