@@ -52,8 +52,14 @@ def list_cases(
 
     if priority and isinstance(priority, str) and priority.strip().upper() != "ALL":
         query = query.filter(CollectionCase.priority_level == priority.strip().upper())
-    if status and isinstance(status, str) and status.strip().upper() != "ALL":
-        query = query.filter(CollectionCase.case_status == status.strip().upper())
+    
+    # Status filtering: Default to active collection pipeline (exclude settled/resolved/closed)
+    if status and isinstance(status, str):
+        if status.strip().upper() != "ALL":
+            query = query.filter(CollectionCase.case_status == status.strip().upper())
+    else:
+        query = query.filter(CollectionCase.case_status.notin_(["RESOLVED", "CLOSED"]))
+
     if search and isinstance(search, str):
         query = query.filter(
             (CollectionCase.case_id.ilike(f"%{search}%"))
