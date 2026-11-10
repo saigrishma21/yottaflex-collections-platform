@@ -7,7 +7,7 @@
 [![React](https://img.shields.io/badge/React-18%20%2B%20Vite-sky)](#frontend-stack)
 [![FastAPI](https://img.shields.io/badge/FastAPI-1.0.0-teal)](#api-endpoints)
 
-A complete, production-grade AI-powered collections and delinquency management platform built for the **YottaFlex.ai Associate AI Forward Deployed Engineer Hackathon**.
+An end-to-end AI-powered delinquency and collections management platform built for the **YottaFlex.ai Associate AI Forward Deployed Engineer Hackathon**.
 
 The solution prioritizes overdue loan accounts using explainable mathematical attribution, schedules customer contact tasks in compliance with statutory windows (FDCPA/TCPA), automates commitment reconciliation (Promises-to-Pay), detects non-compliant debt collection practices, and evaluates performance against an isolated ground truth benchmark without feature leakage.
 
@@ -140,14 +140,14 @@ Running `python -m validation.validator` verifies all constraints:
   accounts                 :   10,000 records
   loans                    :   10,000 records
   installments             :   30,000 records
-  payments                 :   22,845 records
-  payment_allocations      :   22,865 records
+  payments                 :   22,585 records
+  payment_allocations      :   22,605 records
   delinquency_snapshots    :   10,000 records
   contact_preferences      :    8,000 records
-  collection_cases         :    3,046 records
-  contact_attempts         :    1,947 records
-  promises_to_pay          :      824 records
-  case_events              :    5,757 records
+  collection_cases         :    3,113 records
+  contact_attempts         :    2,060 records
+  promises_to_pay          :      919 records
+  case_events              :    6,032 records
 ----------------------------------------------------------------------
   [PASS] Primary Key Uniqueness                     : All primary keys are 100% unique.
   [PASS] Foreign Key Integrity                      : Zero orphaned foreign key records.
@@ -171,17 +171,17 @@ Running `python -m validation.reproducibility` generates the dataset twice from 
           REPRODUCIBILITY COMPARISON RESULTS (Seed: 20261022)
 ======================================================================
   [MATCH] accounts.csv                 | Rows: 10,000 vs 10,000 | SHA256 Match: True
-  [MATCH] case_events.csv              | Rows:  5,757 vs  5,757 | SHA256 Match: True
-  [MATCH] collection_cases.csv         | Rows:  3,046 vs  3,046 | SHA256 Match: True
-  [MATCH] contact_attempts.csv         | Rows:  1,947 vs  1,947 | SHA256 Match: True
+  [MATCH] case_events.csv              | Rows:  6,032 vs  6,032 | SHA256 Match: True
+  [MATCH] collection_cases.csv         | Rows:  3,113 vs  3,113 | SHA256 Match: True
+  [MATCH] contact_attempts.csv         | Rows:  2,060 vs  2,060 | SHA256 Match: True
   [MATCH] contact_preferences.csv      | Rows:  8,000 vs  8,000 | SHA256 Match: True
   [MATCH] customers.csv                | Rows:  8,000 vs  8,000 | SHA256 Match: True
   [MATCH] delinquency_snapshots.csv    | Rows: 10,000 vs 10,000 | SHA256 Match: True
   [MATCH] installments.csv             | Rows: 30,000 vs 30,000 | SHA256 Match: True
   [MATCH] loans.csv                    | Rows: 10,000 vs 10,000 | SHA256 Match: True
-  [MATCH] payment_allocations.csv      | Rows: 22,865 vs 22,865 | SHA256 Match: True
-  [MATCH] payments.csv                 | Rows: 22,845 vs 22,845 | SHA256 Match: True
-  [MATCH] promises_to_pay.csv          | Rows:    824 vs    824 | SHA256 Match: True
+  [MATCH] payment_allocations.csv      | Rows: 22,605 vs 22,605 | SHA256 Match: True
+  [MATCH] payments.csv                 | Rows: 22,585 vs 22,585 | SHA256 Match: True
+  [MATCH] promises_to_pay.csv          | Rows:    919 vs    919 | SHA256 Match: True
 ======================================================================
 REPRODUCIBILITY TEST RESULT: 100% IDENTICAL CHECKSUMS (PASSED)
 ======================================================================
@@ -191,11 +191,13 @@ REPRODUCIBILITY TEST RESULT: 100% IDENTICAL CHECKSUMS (PASSED)
 
 ## 8. Ground Truth Anomaly Detection Benchmark
 
-Evaluated via `GET /api/compliance/benchmark`:
+Evaluated via `GET /api/compliance/benchmark` against the 100 synthetic negative edge cases injected into the isolated ground truth dataset:
 
 $$\text{Precision} = \frac{\text{TP}}{\text{TP} + \text{FP}} = \frac{100}{100 + 0} = 1.0000 \quad (100\%)$$
 $$\text{Recall} = \frac{\text{TP}}{\text{TP} + \text{FN}} = \frac{100}{100 + 0} = 1.0000 \quad (100\%)$$
 $$\text{F1-Score} = 2 \times \frac{\text{Precision} \times \text{Recall}}{\text{Precision} + \text{Recall}} = 1.0000$$
+
+> **Benchmark Scope Note**: The 100.0% precision, recall, and F1-score are measured specifically against the 100 synthetic negative edge cases injected into the isolated ground truth dataset (`data/ground_truth/ground_truth.csv`), demonstrating that the statutory compliance engine correctly flags all seeded regulatory breaches with zero false alarms.
 
 ---
 
@@ -311,12 +313,12 @@ YFH/
 
 * [x] **10 Core Entities + Bridge**: `Customer`, `Account`, `Loan`, `Installment`, `DelinquencySnapshot`, `ContactPreference`, `ContactAttempt`, `PromiseToPay`, `Payment`, `CollectionCase` + `PaymentAllocation` + `CaseEvent`.
 * [x] **ID Nomenclature**: Zero-padded immutable IDs (`LOAN-2026-000001`, `INS-LOAN-2026-000001-001`, `COL-2026-000001`, `CTP-COL-2026-000001-001`, `PMT-2026-000001`).
-* [x] **Baseline Volume**: 10,000 loans, 30,000 installments, 22,845 payments over 12 months.
+* [x] **Baseline Volume**: 10,000 loans, 30,000 installments, 22,585 payments over 12 months.
 * [x] **5 Required Negative Scenarios**: Paid in collection, outside contact window, cross-loan allocation mismatch, promise exceeding arrears, disputed debt outreach.
 * [x] **Isolated Ground Truth**: Separated in `data/ground_truth/ground_truth.csv` with zero feature leakage.
 * [x] **Mathematical Integrity**: Total arrears and DPD derived strictly from source installment schedules.
 * [x] **Deterministic Seed Reproducibility**: 100% identical SHA-256 checksums across dual generation passes with seed `20261022`.
 * [x] **Multi-Format Exports**: Individual CSVs, `seed_data.sql`, `dataset.json`, and `source_manifest.json`.
-* [x] **Automated Tests**: 24 tests passing in Pytest.
+* [x] **Automated Tests**: 27 tests passing in Pytest.
 * [x] **Interactive Dashboard**: Modern React + Vite operations interface with explainability drawer and compliance inspector.
 

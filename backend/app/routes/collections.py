@@ -189,8 +189,23 @@ def record_contact_attempt(
 
     compliance_status = "COMPLIANT"
     if pref:
-        recent_atts = db.query(ContactAttempt).filter(ContactAttempt.case_id == case_id).all()
-        check = validate_contact_schedule(pref, contact_dt, recent_attempts=recent_atts)
+        # Cross-account frequency cap: query recent attempts across ALL cases belonging to this customer
+        cust_case_ids = [
+            c_id for (c_id,) in db.query(CollectionCase.case_id)
+            .filter(CollectionCase.customer_id == case.customer_id)
+            .all()
+        ]
+        recent_atts = (
+            db.query(ContactAttempt)
+            .filter(ContactAttempt.case_id.in_(cust_case_ids))
+            .all()
+        )
+        check = validate_contact_schedule(
+            pref,
+            contact_dt,
+            recent_attempts=recent_atts,
+            contact_channel=payload.contact_channel,
+        )
         if not check["allowed"]:
             compliance_status = check["status"]
 

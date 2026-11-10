@@ -58,6 +58,67 @@ def test_compliant_window_allowed():
     assert res["status"] == "SCHEDULED"
 
 
+def test_timezone_conversion_contact_window():
+    """Verify UTC datetime is converted to borrower timezone before evaluating window."""
+    from datetime import timezone
+    pref = ContactPreference(
+        preference_id="PREF-004",
+        customer_id="CUST-004",
+        preferred_channel="PHONE",
+        contact_start_time="09:00:00",
+        contact_end_time="18:00:00",
+        timezone="Asia/Kolkata",  # UTC+5:30
+        do_not_call=False,
+        contact_allowed=True,
+    )
+    # 04:30 UTC is 10:00 AM IST (Compliant window 09:00 to 18:00)
+    utc_compliant = datetime(2026, 10, 20, 4, 30, 0, tzinfo=timezone.utc)
+    res_compliant = validate_contact_schedule(pref, utc_compliant)
+    assert res_compliant["allowed"] is True
+    assert res_compliant["status"] == "SCHEDULED"
+
+    # 13:30 UTC is 19:00 (7:00 PM IST - after 18:00 window)
+    utc_late = datetime(2026, 10, 20, 13, 30, 0, tzinfo=timezone.utc)
+    res_late = validate_contact_schedule(pref, utc_late)
+    assert res_late["allowed"] is False
+    assert res_late["status"] == "BLOCKED_OUTSIDE_WINDOW"
+
+
+def test_weekly_voice_frequency_cap_proposed_channel():
+    """Verify proposed contact_channel='PHONE' triggers frequency cap even if preferred is SMS."""
+    pref = ContactPreference(
+        preference_id="PREF-005",
+        customer_id="CUST-005",
+        preferred_channel="SMS",  # Preferred is SMS, but outreach proposes PHONE
+        contact_start_time="09:00:00",
+        contact_end_time="18:00:00",
+        timezone="Asia/Kolkata",
+        do_not_call=False,
+        contact_allowed=True,
+    )
+    # 3 prior phone calls in the last 7 days across cases
+    prior_attempts = [
+        ContactAttempt(
+            contact_id=f"CTP-00{i}",
+            case_id="COL-CASE-A",
+            contact_channel="PHONE",
+            contact_time=datetime(2026, 10, 18, 11, 0, 0),
+            outcome="NO_ANSWER",
+            compliance_status="COMPLIANT",
+        )
+        for i in range(1, 4)
+    ]
+    # Attempting a 4th voice call on another case
+    res = validate_contact_schedule(
+        pref,
+        datetime(2026, 10, 20, 11, 0, 0),
+        recent_attempts=prior_attempts,
+        contact_channel="PHONE",
+    )
+    assert res["allowed"] is False
+    assert res["status"] == "BLOCKED_FREQUENCY_LIMIT"
+
+
 def test_compliance_scanner_identifies_injected_anomalies():
     """Verify that scan_compliance_violations catches all 5 injected negative scenarios in the DB."""
     db = SessionLocal()

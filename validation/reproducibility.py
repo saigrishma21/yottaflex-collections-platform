@@ -8,6 +8,7 @@ import sys
 import os
 import shutil
 import hashlib
+import csv
 
 # Add project root to sys.path
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
@@ -30,9 +31,10 @@ def get_dir_checksums(dir_path: str):
             fpath = os.path.join(csv_dir, fname)
             with open(fpath, "rb") as f:
                 checksums[fname] = hashlib.sha256(f.read()).hexdigest()
-            with open(fpath, "r", encoding="utf-8") as f:
-                # Exclude header
-                row_counts[fname] = max(0, sum(1 for _ in f) - 1)
+            with open(fpath, "r", encoding="utf-8", newline="") as f:
+                reader = csv.reader(f)
+                header = next(reader, None)
+                row_counts[fname] = sum(1 for _ in reader) if header else 0
 
     return checksums, row_counts
 
