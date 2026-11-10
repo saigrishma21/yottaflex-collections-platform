@@ -144,3 +144,4 @@ def test_foreign_key_violation(db):
     with pytest.raises(IntegrityError):
         db.commit()
     db.rollback()
+

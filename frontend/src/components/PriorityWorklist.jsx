@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { Search, Filter, HelpCircle, Eye, AlertCircle } from 'lucide-react';
+import React from 'react';
+import { Search, Filter, HelpCircle, Eye, AlertCircle, RefreshCw } from 'lucide-react';
 
 export default function PriorityWorklist({
   cases = [],
@@ -10,6 +10,7 @@ export default function PriorityWorklist({
   searchQuery,
   setSearchQuery,
   loading,
+  onRefresh,
 }) {
   const priorityFilters = ['ALL', 'CRITICAL', 'HIGH', 'MEDIUM', 'LOW'];
 
@@ -38,16 +39,27 @@ export default function PriorityWorklist({
           })}
         </div>
 
-        {/* Search Input */}
-        <div className="relative max-w-xs w-full">
-          <Search className="w-4 h-4 absolute left-3 top-2.5 text-slate-400" />
-          <input
-            type="text"
-            placeholder="Search by case, loan, or borrower..."
-            value={searchQuery}
-            onChange={(e) => setSearchQuery(e.target.value)}
-            className="w-full pl-9 pr-3 py-1.5 text-xs bg-white border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-sky-500 focus:border-sky-500"
-          />
+        {/* Search Input & Refresh Button */}
+        <div className="flex items-center space-x-2 max-w-sm w-full">
+          <div className="relative flex-1">
+            <Search className="w-4 h-4 absolute left-3 top-2.5 text-slate-400" />
+            <input
+              type="text"
+              placeholder="Search by case, loan, or borrower..."
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              className="w-full pl-9 pr-3 py-1.5 text-xs bg-white border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-sky-500 focus:border-sky-500"
+            />
+          </div>
+          {onRefresh && (
+            <button
+              onClick={onRefresh}
+              title="Refresh queue"
+              className="p-1.5 bg-white border border-slate-300 rounded-lg text-slate-600 hover:text-slate-900 hover:bg-slate-100"
+            >
+              <RefreshCw className={`w-4 h-4 ${loading ? 'animate-spin' : ''}`} />
+            </button>
+          )}
         </div>
       </div>
 
@@ -69,7 +81,10 @@ export default function PriorityWorklist({
             {loading ? (
               <tr>
                 <td colSpan="7" className="px-4 py-8 text-center text-slate-400">
-                  Loading prioritized collections queue...
+                  <div className="flex items-center justify-center space-x-2">
+                    <RefreshCw className="w-4 h-4 animate-spin text-sky-600" />
+                    <span>Loading prioritized collections queue...</span>
+                  </div>
                 </td>
               </tr>
             ) : cases.length === 0 ? (
@@ -79,56 +94,66 @@ export default function PriorityWorklist({
                 </td>
               </tr>
             ) : (
-              cases.map((c) => (
-                <tr key={c.case_id} className="hover:bg-slate-50/80 transition-colors">
-                  <td className="px-4 py-3 font-mono font-bold text-slate-900">{c.case_id}</td>
-                  <td className="px-4 py-3 font-medium text-slate-800">{c.customer_name || c.customer_id}</td>
-                  <td className="px-4 py-3 text-right font-bold text-rose-600">
-                    ₹{Number(c.outstanding_amount).toLocaleString()}
-                  </td>
-                  <td className="px-4 py-3 text-center font-bold text-slate-700">
-                    <span className="bg-slate-100 px-2 py-0.5 rounded font-mono">{c.days_past_due}d</span>
-                  </td>
-                  <td className="px-4 py-3 text-center">
-                    <div className="flex items-center justify-center space-x-1.5">
-                      <span
-                        className={`px-2.5 py-0.5 rounded-full text-2xs font-extrabold uppercase tracking-wider ${
-                          c.priority_level === 'CRITICAL'
-                            ? 'bg-rose-100 text-rose-800 border border-rose-200'
-                            : c.priority_level === 'HIGH'
-                            ? 'bg-amber-100 text-amber-800 border border-amber-200'
-                            : c.priority_level === 'MEDIUM'
-                            ? 'bg-sky-100 text-sky-800 border border-sky-200'
-                            : 'bg-emerald-100 text-emerald-800 border border-emerald-200'
-                        }`}
-                      >
-                        {c.priority_level} ({Number(c.priority_score).toFixed(1)})
+              cases.map((c) => {
+                const caseId = c.case_id || c.id || 'N/A';
+                const customerName = c.customer_name || c.name || c.customer_id || 'Unknown';
+                const arrearsAmount = Number(c.outstanding_amount ?? c.amount ?? c.arrears ?? 0);
+                const dpd = c.days_past_due ?? c.dpd ?? 0;
+                const score = Number(c.priority_score ?? c.score ?? 0);
+                const priorityLevel = (c.priority_level || c.level || 'MEDIUM').toUpperCase();
+                const caseStatus = c.case_status || c.status || 'OPEN';
+
+                return (
+                  <tr key={caseId} className="hover:bg-slate-50/80 transition-colors">
+                    <td className="px-4 py-3 font-mono font-bold text-slate-900">{caseId}</td>
+                    <td className="px-4 py-3 font-medium text-slate-800">{customerName}</td>
+                    <td className="px-4 py-3 text-right font-bold text-rose-600">
+                      ₹{arrearsAmount.toLocaleString()}
+                    </td>
+                    <td className="px-4 py-3 text-center font-bold text-slate-700">
+                      <span className="bg-slate-100 px-2 py-0.5 rounded font-mono">{dpd}d</span>
+                    </td>
+                    <td className="px-4 py-3 text-center">
+                      <div className="flex items-center justify-center space-x-1.5">
+                        <span
+                          className={`px-2.5 py-0.5 rounded-full text-2xs font-extrabold uppercase tracking-wider ${
+                            priorityLevel === 'CRITICAL'
+                              ? 'bg-rose-100 text-rose-800 border border-rose-200'
+                              : priorityLevel === 'HIGH'
+                              ? 'bg-amber-100 text-amber-800 border border-amber-200'
+                              : priorityLevel === 'MEDIUM'
+                              ? 'bg-sky-100 text-sky-800 border border-sky-200'
+                              : 'bg-emerald-100 text-emerald-800 border border-emerald-200'
+                          }`}
+                        >
+                          {priorityLevel} ({score.toFixed(1)})
+                        </span>
+                        <button
+                          onClick={() => onExplainScore(caseId)}
+                          title="Explain this score"
+                          className="text-slate-400 hover:text-sky-600 p-0.5"
+                        >
+                          <HelpCircle className="w-3.5 h-3.5" />
+                        </button>
+                      </div>
+                    </td>
+                    <td className="px-4 py-3 text-center font-semibold text-slate-700">
+                      <span className="text-2xs font-mono bg-slate-100 px-2 py-0.5 rounded">
+                        {caseStatus}
                       </span>
+                    </td>
+                    <td className="px-4 py-3 text-right">
                       <button
-                        onClick={() => onExplainScore(c.case_id)}
-                        title="Explain this score"
-                        className="text-slate-400 hover:text-sky-600 p-0.5"
+                        onClick={() => onSelectCase(caseId)}
+                        className="inline-flex items-center space-x-1 px-3 py-1 bg-slate-100 hover:bg-sky-50 text-slate-700 hover:text-sky-700 rounded-lg text-xs font-semibold border border-slate-200 transition-colors"
                       >
-                        <HelpCircle className="w-3.5 h-3.5" />
+                        <Eye className="w-3.5 h-3.5" />
+                        <span>View Dossier</span>
                       </button>
-                    </div>
-                  </td>
-                  <td className="px-4 py-3 text-center font-semibold text-slate-700">
-                    <span className="text-2xs font-mono bg-slate-100 px-2 py-0.5 rounded">
-                      {c.case_status}
-                    </span>
-                  </td>
-                  <td className="px-4 py-3 text-right">
-                    <button
-                      onClick={() => onSelectCase(c.case_id)}
-                      className="inline-flex items-center space-x-1 px-3 py-1 bg-slate-100 hover:bg-sky-50 text-slate-700 hover:text-sky-700 rounded-lg text-xs font-semibold border border-slate-200 transition-colors"
-                    >
-                      <Eye className="w-3.5 h-3.5" />
-                      <span>View Dossier</span>
-                    </button>
-                  </td>
-                </tr>
-              ))
+                    </td>
+                  </tr>
+                );
+              })
             )}
           </tbody>
         </table>

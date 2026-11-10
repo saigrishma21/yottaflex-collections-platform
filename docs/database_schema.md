@@ -182,3 +182,4 @@ erDiagram
 10. **`contact_attempts`**: `case_id`, `contact_time`, `compliance_status`
 11. **`promises_to_pay`**: `case_id`, `promised_date`, `status`
 12. **`case_events`**: `case_id`, `created_at`, `event_type`
+

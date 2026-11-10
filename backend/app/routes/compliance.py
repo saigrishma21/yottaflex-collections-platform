@@ -70,3 +70,4 @@ def evaluate_ground_truth_benchmark(db: Session = Depends(get_db)):
             f"F1-Score: {f1_score * 100:.1f}%, Precision: {precision * 100:.1f}%, Recall: {recall * 100:.1f}%."
         ),
     }
+

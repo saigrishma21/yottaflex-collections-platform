@@ -77,3 +77,4 @@ export default function Navbar({ activeTab, setActiveTab, complianceCount = 0 })
     </header>
   );
 }
+

@@ -50,10 +50,10 @@ def list_cases(
         .join(Customer, CollectionCase.customer_id == Customer.customer_id)
     )
 
-    if priority and isinstance(priority, str):
-        query = query.filter(CollectionCase.priority_level == priority.upper())
-    if status and isinstance(status, str):
-        query = query.filter(CollectionCase.case_status == status.upper())
+    if priority and isinstance(priority, str) and priority.strip().upper() != "ALL":
+        query = query.filter(CollectionCase.priority_level == priority.strip().upper())
+    if status and isinstance(status, str) and status.strip().upper() != "ALL":
+        query = query.filter(CollectionCase.case_status == status.strip().upper())
     if search and isinstance(search, str):
         query = query.filter(
             (CollectionCase.case_id.ilike(f"%{search}%"))

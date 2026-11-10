@@ -122,3 +122,4 @@ The system includes 5 required edge cases to validate compliance monitoring. Eac
 | `ERR_WRONG_PAYMENT_ALLOCATION` | Payment Allocated to Wrong Installment | `PaymentAllocation` references an installment belonging to a different loan. | Cross-loan validation flags allocation mismatch. |
 | `ERR_PROMISE_EXCEEDS_ARREARS` | Promise Exceeds Arrears | Promised amount is greater than twice the total arrears balance. | Commitment validation flags `INVALID_COMMITMENT_AMOUNT`. |
 | `ERR_DISPUTED_TREATED_CONFIRMED` | Disputed Debt Treated as Confirmed | Loan has `dispute_status = 'OPEN'`, but case is subjected to active collection calls. | Compliance engine flags `VIOLATION_DISPUTED_COLLECTION`. |
+

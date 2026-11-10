@@ -5,7 +5,7 @@ import os
 import csv
 import json
 import hashlib
-from datetime import datetime, date
+from datetime import datetime, date, timezone
 from decimal import Decimal
 from backend.app.database import engine, Base, SessionLocal
 
@@ -23,7 +23,7 @@ def serialize_val(val):
     return str(val)
 
 
-def export_all(data_dict, ground_truth, output_dir: str, seed: int, scale: str):
+def export_all(data_dict, ground_truth, output_dir: str, seed: int, scale: str, populate_db: bool = True):
     """Export all generated tables to CSVs, SQL, JSON, and source manifest."""
     os.makedirs(os.path.join(output_dir, "generated"), exist_ok=True)
     os.makedirs(os.path.join(output_dir, "exports"), exist_ok=True)
@@ -58,45 +58,46 @@ def export_all(data_dict, ground_truth, output_dir: str, seed: int, scale: str):
         with open(csv_path, "rb") as f:
             file_checksums[f"{table_name}.csv"] = hashlib.sha256(f.read()).hexdigest()
 
-    # 2. POPULATE SQLITE DATABASE
-    print("Writing records to SQLite database (hackathon.db)...")
-    Base.metadata.create_all(bind=engine)
-    session = SessionLocal()
-    try:
-        # Clear existing rows in reverse dependency order
-        for table in reversed(Base.metadata.sorted_tables):
-            session.execute(table.delete())
-        session.commit()
+    # 2. POPULATE SQLITE DATABASE (Only for primary dataset destination)
+    if populate_db and output_dir == "data":
+        print("Writing records to SQLite database (hackathon.db)...")
+        Base.metadata.create_all(bind=engine)
+        session = SessionLocal()
+        try:
+            # Clear existing rows in reverse dependency order
+            for table in reversed(Base.metadata.sorted_tables):
+                session.execute(table.delete())
+            session.commit()
 
-        # Insert new rows in forward dependency order
-        for table_name in [
-            "customers",
-            "accounts",
-            "loans",
-            "contact_preferences",
-            "installments",
-            "payments",
-            "payment_allocations",
-            "delinquency_snapshots",
-            "collection_cases",
-            "contact_attempts",
-            "promises_to_pay",
-            "case_events",
-        ]:
-            records = data_dict.get(table_name, [])
-            if records:
-                session.bulk_save_objects(records)
-                session.commit()
-        print("Database population complete.")
-    finally:
-        session.close()
+            # Insert new rows in forward dependency order
+            for table_name in [
+                "customers",
+                "accounts",
+                "loans",
+                "contact_preferences",
+                "installments",
+                "payments",
+                "payment_allocations",
+                "delinquency_snapshots",
+                "collection_cases",
+                "contact_attempts",
+                "promises_to_pay",
+                "case_events",
+            ]:
+                records = data_dict.get(table_name, [])
+                if records:
+                    session.bulk_save_objects(records)
+                    session.commit()
+            print("Database population complete.")
+        finally:
+            session.close()
 
     # 3. EXPORT SEED_DATA.SQL
     print("Generating seed_data.sql...")
     sql_path = os.path.join(exports_dir, "seed_data.sql")
     with open(sql_path, "w", encoding="utf-8") as f:
         f.write("-- YottaFlex Hackathon Seed Data Script\n")
-        f.write(f"-- Generated on: {datetime.utcnow().isoformat()}\n")
+        f.write(f"-- Generated on: {datetime.now(timezone.utc).isoformat()}\n")
         f.write(f"-- Random Seed: {seed} | Scale: {scale}\n\n")
 
         for table_name, records in data_dict.items():
@@ -151,7 +152,7 @@ def export_all(data_dict, ground_truth, output_dir: str, seed: int, scale: str):
         "generator_version": "1.0.0",
         "random_seed": seed,
         "scale": scale,
-        "generated_at": datetime.utcnow().isoformat(),
+        "generated_at": datetime.now(timezone.utc).isoformat(),
         "source_type": "Synthetic (Parametric Amortization & Behavior Simulation)",
         "external_data_sources": "None (Fully lawful, self-contained synthetic data)",
         "entity_counts": table_counts,
@@ -163,3 +164,4 @@ def export_all(data_dict, ground_truth, output_dir: str, seed: int, scale: str):
 
     print(f"Export summary successfully written to {manifest_path}")
     return manifest
+

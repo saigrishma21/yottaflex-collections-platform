@@ -38,3 +38,4 @@ def generate_installments(loans, total_target_installments: int):
             installments.append(installment)
 
     return installments
+

@@ -78,3 +78,4 @@ def generate_delinquency_snapshots(loans, installments, customers):
         snapshots.append(snapshot)
 
     return snapshots
+

@@ -42,3 +42,4 @@ def test_critical_priority_scoring():
     assert result["eligible"] is True
     assert len(result["factors"]) == 3
     assert result["factors"][0]["factor_name"] == "Outstanding Balance Arrears"
+

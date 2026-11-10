@@ -55,11 +55,11 @@ def verify_seed_reproducibility(seed: int = DEFAULT_RANDOM_SEED, scale: str = "s
         print("-" * 70)
 
         print("\n--> [Pass 1/2] Generating initial dataset...")
-        run_pipeline(scale=scale, seed=seed, output_dir=run1_dir)
+        run_pipeline(scale=scale, seed=seed, output_dir=run1_dir, populate_db=False)
         checks_1, counts_1 = get_dir_checksums(run1_dir)
 
         print("\n--> [Pass 2/2] Regenerating dataset from identical seed...")
-        run_pipeline(scale=scale, seed=seed, output_dir=run2_dir)
+        run_pipeline(scale=scale, seed=seed, output_dir=run2_dir, populate_db=False)
         checks_2, counts_2 = get_dir_checksums(run2_dir)
 
         print("\n" + "=" * 70)
@@ -99,3 +99,4 @@ def verify_seed_reproducibility(seed: int = DEFAULT_RANDOM_SEED, scale: str = "s
 if __name__ == "__main__":
     success = verify_seed_reproducibility(scale="starter")
     sys.exit(0 if success else 1)
+

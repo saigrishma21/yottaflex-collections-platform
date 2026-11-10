@@ -53,3 +53,4 @@ PAYMENT_METHOD_WEIGHTS = {
     "WIRE_TRANSFER": 0.03,
     "CASH": 0.02,
 }
+

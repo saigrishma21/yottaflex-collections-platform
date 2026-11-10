@@ -128,3 +128,4 @@ def scan_compliance_violations(db: Session) -> List[Dict[str, Any]]:
         })
 
     return violations
+

@@ -73,3 +73,4 @@ def test_compliance_scanner_identifies_injected_anomalies():
         assert "ERR_DISPUTED_TREATED_CONFIRMED" in violation_codes
     finally:
         db.close()
+

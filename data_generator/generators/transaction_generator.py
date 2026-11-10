@@ -120,3 +120,4 @@ def generate_transactions(loans, installments, seed: int):
                     inst.status = "PARTIALLY_PAID"
 
     return payments, allocations
+

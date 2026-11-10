@@ -107,3 +107,4 @@ def score_collection_account(
         "factors": factors,
         "decision_summary": summary,
     }
+

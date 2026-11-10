@@ -484,3 +484,4 @@ export default function CaseDetailModal({ caseDetail, onClose, onRefresh }) {
     </div>
   );
 }
+

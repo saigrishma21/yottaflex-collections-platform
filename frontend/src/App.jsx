@@ -14,6 +14,7 @@ import {
   fetchCollections,
   fetchCaseDetail,
 } from './services/api';
+import { AlertTriangle } from 'lucide-react';
 
 export default function App() {
   const [activeTab, setActiveTab] = useState('dashboard');
@@ -23,6 +24,7 @@ export default function App() {
   const [selectedPriority, setSelectedPriority] = useState('ALL');
   const [searchQuery, setSearchQuery] = useState('');
   const [loadingCases, setLoadingCases] = useState(false);
+  const [apiError, setApiError] = useState(null);
 
   // Modals state
   const [selectedCaseDetail, setSelectedCaseDetail] = useState(null);
@@ -46,8 +48,10 @@ export default function App() {
       ]);
       setSummary(sumData);
       setMetrics(metData);
+      setApiError(null);
     } catch (err) {
       console.error('Failed to load dashboard data:', err);
+      setApiError('Unable to connect to FastAPI backend at port 8000. Ensure the server is running.');
     }
   };
 
@@ -61,8 +65,10 @@ export default function App() {
 
       const data = await fetchCollections(params);
       setCases(data);
+      setApiError(null);
     } catch (err) {
       console.error('Failed to load collection cases:', err);
+      setApiError(err.message || 'Error loading collection cases');
     } finally {
       setLoadingCases(false);
     }
@@ -97,6 +103,22 @@ export default function App() {
       />
 
       <main className="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        {/* Connection Warning Banner */}
+        {apiError && (
+          <div className="mb-6 p-4 bg-amber-50 border border-amber-200 text-amber-900 rounded-xl flex items-center space-x-3 text-sm">
+            <AlertTriangle className="w-5 h-5 text-amber-600 shrink-0" />
+            <div className="flex-1">
+              <strong>Connection Notice:</strong> {apiError}
+            </div>
+            <button
+              onClick={() => { loadDashboardData(); loadCases(); }}
+              className="px-3 py-1 bg-amber-600 text-white rounded-lg text-xs font-bold hover:bg-amber-700"
+            >
+              Retry
+            </button>
+          </div>
+        )}
+
         {/* TAB 1: EXECUTIVE DASHBOARD */}
         {activeTab === 'dashboard' && (
           <div className="space-y-6">
@@ -123,6 +145,7 @@ export default function App() {
                 searchQuery={searchQuery}
                 setSearchQuery={setSearchQuery}
                 loading={loadingCases}
+                onRefresh={loadCases}
               />
             </div>
           </div>
@@ -150,6 +173,7 @@ export default function App() {
               searchQuery={searchQuery}
               setSearchQuery={setSearchQuery}
               loading={loadingCases}
+              onRefresh={loadCases}
             />
           </div>
         )}

@@ -1,5 +1,5 @@
 -- YottaFlex Hackathon Seed Data Script
--- Generated on: 2026-11-10T06:05:43.886842
+-- Generated on: 2026-11-10T06:42:57.649328+00:00
 -- Random Seed: 20261022 | Scale: full
 
 INSERT INTO customers (customer_id, first_name, last_name, email, phone, address, city, state, postal_code, risk_segment, created_at, updated_at) VALUES ('CUST-2026-000001', 'Ira', 'Mandal', 'ira.mandal.1@example.com', '+919829875200', '491, Doctor Ganj', 'Nashik', 'Uttarakhand', '330820', 'LOW', '2025-10-01T10:00:00', '2025-10-01T10:00:00');

@@ -23,7 +23,7 @@ from data_generator.anomaly_injector import inject_required_anomalies, export_gr
 from data_generator.exporter import export_all
 
 
-def run_pipeline(scale: str = "starter", seed: int = DEFAULT_RANDOM_SEED, output_dir: str = "data"):
+def run_pipeline(scale: str = "starter", seed: int = DEFAULT_RANDOM_SEED, output_dir: str = "data", populate_db: bool = True):
     """Execute complete end-to-end data generation pipeline."""
     start_time = datetime.now()
     scale_cfg = SCALE_CONFIGS.get(scale, SCALE_CONFIGS["starter"])
@@ -99,7 +99,7 @@ def run_pipeline(scale: str = "starter", seed: int = DEFAULT_RANDOM_SEED, output
     }
 
     # Export everything
-    manifest = export_all(data_dict, ground_truth, output_dir, seed, scale)
+    manifest = export_all(data_dict, ground_truth, output_dir, seed, scale, populate_db=populate_db)
 
     duration = (datetime.now() - start_time).total_seconds()
     print("=" * 70)
@@ -116,3 +116,4 @@ if __name__ == "__main__":
     args = parser.parse_args()
 
     run_pipeline(scale=args.scale, seed=args.seed, output_dir=args.output_dir)
+

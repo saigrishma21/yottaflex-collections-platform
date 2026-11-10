@@ -57,3 +57,4 @@ def calculate_delinquency(
         "delinquency_bucket": bucket,
         "oldest_unpaid_due_date": oldest_due,
     }
+

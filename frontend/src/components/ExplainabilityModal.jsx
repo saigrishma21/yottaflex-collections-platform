@@ -97,3 +97,4 @@ export default function ExplainabilityModal({ explanation, onClose }) {
     </div>
   );
 }
+

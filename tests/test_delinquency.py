@@ -58,3 +58,4 @@ def test_overdue_installment_dpd_and_arrears():
     assert result["total_arrears"] == Decimal("4200.00")
     assert result["delinquency_bucket"] == "BUCKET_31_60"
     assert result["overdue_installments_count"] == 2
+

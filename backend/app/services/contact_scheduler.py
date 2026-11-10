@@ -71,3 +71,4 @@ def validate_contact_schedule(
         "reason": "Outreach complies with permissible contact hours and regulatory frequency caps.",
         "preferred_channel": preference.preferred_channel,
     }
+

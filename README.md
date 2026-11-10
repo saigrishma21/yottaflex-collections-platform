@@ -318,3 +318,4 @@ YFH/
 * [x] **Multi-Format Exports**: Individual CSVs, `seed_data.sql`, `dataset.json`, and `source_manifest.json`.
 * [x] **Automated Tests**: 24 tests passing in Pytest.
 * [x] **Interactive Dashboard**: Modern React + Vite operations interface with explainability drawer and compliance inspector.
+

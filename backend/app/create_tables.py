@@ -45,3 +45,4 @@ if __name__ == "__main__":
     if len(sys.argv) > 1 and sys.argv[1] == "--reset":
         drop_all_tables()
     create_all_tables()
+

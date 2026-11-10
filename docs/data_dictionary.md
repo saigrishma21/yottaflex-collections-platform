@@ -216,3 +216,4 @@ Immutable event store preserving complete history of state changes and decisions
 | `metadata_json` | Text | No | Valid JSON string | No | Additional context / factor details. |
 | `created_by` | String(64) | Yes | User / `SYSTEM` | No | Actor responsible for trigger. |
 | `created_at` | DateTime | Yes | UTC timestamp | No | Immutable timestamp of event. |
+

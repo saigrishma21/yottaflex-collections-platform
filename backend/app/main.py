@@ -3,8 +3,10 @@
 YottaFlex AI Collections & Delinquency Management Platform.
 """
 
+import os
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.staticfiles import StaticFiles
 from backend.app.routes import (
     customers,
     loans,
@@ -41,6 +43,15 @@ app.include_router(compliance.router)
 app.include_router(customers.router)
 app.include_router(loans.router)
 
+# Mount bundled production React frontend if built
+FRONTEND_DIST = os.path.join(
+    os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))),
+    "frontend",
+    "dist",
+)
+if os.path.exists(FRONTEND_DIST):
+    app.mount("/app", StaticFiles(directory=FRONTEND_DIST, html=True), name="frontend")
+
 
 @app.get("/", tags=["Health"])
 def health_check():
@@ -50,6 +61,7 @@ def health_check():
         "service": "YottaFlex AI Collections Platform",
         "version": "1.0.0",
         "documentation": "/docs",
+        "web_dashboard": "/app" if os.path.exists(FRONTEND_DIST) else "Run 'npm run dev' in /frontend",
         "features": [
             "Explainable Prioritization Scoring",
             "Statutory Contact Window Scheduling (FDCPA)",
@@ -59,3 +71,4 @@ def health_check():
             "Ground Truth Evaluation Benchmark",
         ],
     }
+

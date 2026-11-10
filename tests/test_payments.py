@@ -74,3 +74,4 @@ def test_promise_broken():
     res = reconcile_promise_commitment(promise, [], as_of_date=date(2026, 11, 6))
     assert res["new_status"] == "BROKEN"
     assert res["actual_paid_amount"] == Decimal("0.00")
+

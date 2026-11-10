@@ -134,3 +134,4 @@ export default function BenchmarkView() {
     </div>
   );
 }
+

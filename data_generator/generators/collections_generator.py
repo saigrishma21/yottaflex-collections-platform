@@ -203,3 +203,4 @@ def generate_collections_workflow(loans, snapshots, customers, preferences, seed
                 case_events.append(evt_promise)
 
     return cases, contact_attempts, promises, case_events
+

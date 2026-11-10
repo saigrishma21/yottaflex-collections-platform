@@ -172,3 +172,4 @@ def generate_master_records(scale_config, seed: int):
         loans.append(loan)
 
     return customers, accounts, loans, contact_preferences
+

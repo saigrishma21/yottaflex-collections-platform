@@ -227,3 +227,4 @@ def run_full_validation():
 if __name__ == "__main__":
     res = run_full_validation()
     sys.exit(0 if res["passed"] else 1)
+

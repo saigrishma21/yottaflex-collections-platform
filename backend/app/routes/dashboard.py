@@ -93,3 +93,4 @@ def list_promises(
     if status:
         query = query.filter(PromiseToPay.status == status.upper())
     return query.order_by(PromiseToPay.promised_date).offset(skip).limit(limit).all()
+
