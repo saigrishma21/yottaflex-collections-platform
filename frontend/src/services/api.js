@@ -63,19 +63,8 @@ export async function fetchCollections(params = {}) {
     }
   }
   const query = new URLSearchParams(cleanParams).toString();
-  try {
-    const data = await safeFetchJson(`/collections${query ? `?${query}` : ''}`);
-    const items = Array.isArray(data) ? data : (data.cases || data.data || []);
-    if (items.length > 0) return items;
-    // Fallback: if filtered query returned empty, try priority worklist
-    if (!cleanParams.priority && !cleanParams.search) {
-      return await fetchPriorityWorklist(cleanParams.limit || 50);
-    }
-    return items;
-  } catch (err) {
-    console.warn('fetchCollections failed, attempting priority fallback:', err);
-    return fetchPriorityWorklist(params.limit || 25);
-  }
+  const data = await safeFetchJson(`/collections${query ? `?${query}` : ''}`);
+  return Array.isArray(data) ? data : (data.cases || data.data || []);
 }
 
 export async function fetchPriorityWorklist(limit = 25) {

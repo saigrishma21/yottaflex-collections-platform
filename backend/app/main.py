@@ -4,9 +4,10 @@ YottaFlex AI Collections & Delinquency Management Platform.
 """
 
 import os
-from fastapi import FastAPI
+from fastapi import FastAPI, Request
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
+from fastapi.responses import RedirectResponse, FileResponse
 from backend.app.routes import (
     customers,
     loans,
@@ -49,16 +50,39 @@ FRONTEND_DIST = os.path.join(
     "frontend",
     "dist",
 )
+
 if os.path.exists(FRONTEND_DIST):
     ASSETS_DIR = os.path.join(FRONTEND_DIST, "assets")
     if os.path.exists(ASSETS_DIR):
         app.mount("/assets", StaticFiles(directory=ASSETS_DIR), name="assets")
+        app.mount("/app/assets", StaticFiles(directory=ASSETS_DIR), name="app_assets")
+
+    INDEX_HTML = os.path.join(FRONTEND_DIST, "index.html")
+
+    @app.get("/app", include_in_schema=False)
+    @app.get("/app/", include_in_schema=False)
+    def serve_frontend_spa():
+        """Serve SPA index.html with strict no-cache headers to prevent stale asset hashes."""
+        return FileResponse(
+            INDEX_HTML,
+            headers={
+                "Cache-Control": "no-cache, no-store, must-revalidate",
+                "Pragma": "no-cache",
+                "Expires": "0",
+            },
+        )
+
+    # Mount remaining root static files (favicon, etc.)
     app.mount("/app", StaticFiles(directory=FRONTEND_DIST, html=True), name="frontend")
 
 
 @app.get("/", tags=["Health"])
-def health_check():
-    """System health check and overview."""
+def health_check(request: Request = None):
+    """System health check and overview. Auto-redirects browser requests to /app/."""
+    if request:
+        accept = request.headers.get("accept", "")
+        if "text/html" in accept and os.path.exists(FRONTEND_DIST):
+            return RedirectResponse(url="/app/")
     return {
         "status": "ONLINE",
         "service": "YottaFlex AI Collections Platform",
