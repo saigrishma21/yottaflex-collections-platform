@@ -1,0 +1,702 @@
+[
+  {
+    "record_id": "COL-2026-ANOM1-0001",
+    "entity_type": "CollectionCase",
+    "issue_type": "PAID_ACCOUNT_IN_COLLECTION",
+    "description": "Loan LOAN-2026-000002 is paid off (0 arrears), but collection case remains OPEN.",
+    "expected_action": "EXCLUDE_AND_CLOSE"
+  },
+  {
+    "record_id": "COL-2026-ANOM1-0002",
+    "entity_type": "CollectionCase",
+    "issue_type": "PAID_ACCOUNT_IN_COLLECTION",
+    "description": "Loan LOAN-2026-000003 is paid off (0 arrears), but collection case remains OPEN.",
+    "expected_action": "EXCLUDE_AND_CLOSE"
+  },
+  {
+    "record_id": "COL-2026-ANOM1-0003",
+    "entity_type": "CollectionCase",
+    "issue_type": "PAID_ACCOUNT_IN_COLLECTION",
+    "description": "Loan LOAN-2026-000004 is paid off (0 arrears), but collection case remains OPEN.",
+    "expected_action": "EXCLUDE_AND_CLOSE"
+  },
+  {
+    "record_id": "COL-2026-ANOM1-0004",
+    "entity_type": "CollectionCase",
+    "issue_type": "PAID_ACCOUNT_IN_COLLECTION",
+    "description": "Loan LOAN-2026-000005 is paid off (0 arrears), but collection case remains OPEN.",
+    "expected_action": "EXCLUDE_AND_CLOSE"
+  },
+  {
+    "record_id": "COL-2026-ANOM1-0005",
+    "entity_type": "CollectionCase",
+    "issue_type": "PAID_ACCOUNT_IN_COLLECTION",
+    "description": "Loan LOAN-2026-000011 is paid off (0 arrears), but collection case remains OPEN.",
+    "expected_action": "EXCLUDE_AND_CLOSE"
+  },
+  {
+    "record_id": "COL-2026-ANOM1-0006",
+    "entity_type": "CollectionCase",
+    "issue_type": "PAID_ACCOUNT_IN_COLLECTION",
+    "description": "Loan LOAN-2026-000013 is paid off (0 arrears), but collection case remains OPEN.",
+    "expected_action": "EXCLUDE_AND_CLOSE"
+  },
+  {
+    "record_id": "COL-2026-ANOM1-0007",
+    "entity_type": "CollectionCase",
+    "issue_type": "PAID_ACCOUNT_IN_COLLECTION",
+    "description": "Loan LOAN-2026-000020 is paid off (0 arrears), but collection case remains OPEN.",
+    "expected_action": "EXCLUDE_AND_CLOSE"
+  },
+  {
+    "record_id": "COL-2026-ANOM1-0008",
+    "entity_type": "CollectionCase",
+    "issue_type": "PAID_ACCOUNT_IN_COLLECTION",
+    "description": "Loan LOAN-2026-000022 is paid off (0 arrears), but collection case remains OPEN.",
+    "expected_action": "EXCLUDE_AND_CLOSE"
+  },
+  {
+    "record_id": "COL-2026-ANOM1-0009",
+    "entity_type": "CollectionCase",
+    "issue_type": "PAID_ACCOUNT_IN_COLLECTION",
+    "description": "Loan LOAN-2026-000028 is paid off (0 arrears), but collection case remains OPEN.",
+    "expected_action": "EXCLUDE_AND_CLOSE"
+  },
+  {
+    "record_id": "COL-2026-ANOM1-0010",
+    "entity_type": "CollectionCase",
+    "issue_type": "PAID_ACCOUNT_IN_COLLECTION",
+    "description": "Loan LOAN-2026-000033 is paid off (0 arrears), but collection case remains OPEN.",
+    "expected_action": "EXCLUDE_AND_CLOSE"
+  },
+  {
+    "record_id": "COL-2026-ANOM1-0011",
+    "entity_type": "CollectionCase",
+    "issue_type": "PAID_ACCOUNT_IN_COLLECTION",
+    "description": "Loan LOAN-2026-000039 is paid off (0 arrears), but collection case remains OPEN.",
+    "expected_action": "EXCLUDE_AND_CLOSE"
+  },
+  {
+    "record_id": "COL-2026-ANOM1-0012",
+    "entity_type": "CollectionCase",
+    "issue_type": "PAID_ACCOUNT_IN_COLLECTION",
+    "description": "Loan LOAN-2026-000040 is paid off (0 arrears), but collection case remains OPEN.",
+    "expected_action": "EXCLUDE_AND_CLOSE"
+  },
+  {
+    "record_id": "COL-2026-ANOM1-0013",
+    "entity_type": "CollectionCase",
+    "issue_type": "PAID_ACCOUNT_IN_COLLECTION",
+    "description": "Loan LOAN-2026-000046 is paid off (0 arrears), but collection case remains OPEN.",
+    "expected_action": "EXCLUDE_AND_CLOSE"
+  },
+  {
+    "record_id": "COL-2026-ANOM1-0014",
+    "entity_type": "CollectionCase",
+    "issue_type": "PAID_ACCOUNT_IN_COLLECTION",
+    "description": "Loan LOAN-2026-000047 is paid off (0 arrears), but collection case remains OPEN.",
+    "expected_action": "EXCLUDE_AND_CLOSE"
+  },
+  {
+    "record_id": "COL-2026-ANOM1-0015",
+    "entity_type": "CollectionCase",
+    "issue_type": "PAID_ACCOUNT_IN_COLLECTION",
+    "description": "Loan LOAN-2026-000049 is paid off (0 arrears), but collection case remains OPEN.",
+    "expected_action": "EXCLUDE_AND_CLOSE"
+  },
+  {
+    "record_id": "COL-2026-ANOM1-0016",
+    "entity_type": "CollectionCase",
+    "issue_type": "PAID_ACCOUNT_IN_COLLECTION",
+    "description": "Loan LOAN-2026-000053 is paid off (0 arrears), but collection case remains OPEN.",
+    "expected_action": "EXCLUDE_AND_CLOSE"
+  },
+  {
+    "record_id": "COL-2026-ANOM1-0017",
+    "entity_type": "CollectionCase",
+    "issue_type": "PAID_ACCOUNT_IN_COLLECTION",
+    "description": "Loan LOAN-2026-000054 is paid off (0 arrears), but collection case remains OPEN.",
+    "expected_action": "EXCLUDE_AND_CLOSE"
+  },
+  {
+    "record_id": "COL-2026-ANOM1-0018",
+    "entity_type": "CollectionCase",
+    "issue_type": "PAID_ACCOUNT_IN_COLLECTION",
+    "description": "Loan LOAN-2026-000065 is paid off (0 arrears), but collection case remains OPEN.",
+    "expected_action": "EXCLUDE_AND_CLOSE"
+  },
+  {
+    "record_id": "COL-2026-ANOM1-0019",
+    "entity_type": "CollectionCase",
+    "issue_type": "PAID_ACCOUNT_IN_COLLECTION",
+    "description": "Loan LOAN-2026-000068 is paid off (0 arrears), but collection case remains OPEN.",
+    "expected_action": "EXCLUDE_AND_CLOSE"
+  },
+  {
+    "record_id": "COL-2026-ANOM1-0020",
+    "entity_type": "CollectionCase",
+    "issue_type": "PAID_ACCOUNT_IN_COLLECTION",
+    "description": "Loan LOAN-2026-000074 is paid off (0 arrears), but collection case remains OPEN.",
+    "expected_action": "EXCLUDE_AND_CLOSE"
+  },
+  {
+    "record_id": "CTP-COL-2026-000001-ANOM2",
+    "entity_type": "ContactAttempt",
+    "issue_type": "OUTSIDE_CONTACT_WINDOW",
+    "description": "Contact attempt occurred at 22:45, violating permissible window 09:00-18:00.",
+    "expected_action": "FLAG_COMPLIANCE_VIOLATION"
+  },
+  {
+    "record_id": "CTP-COL-2026-000004-ANOM2",
+    "entity_type": "ContactAttempt",
+    "issue_type": "OUTSIDE_CONTACT_WINDOW",
+    "description": "Contact attempt occurred at 22:45, violating permissible window 09:00-18:00.",
+    "expected_action": "FLAG_COMPLIANCE_VIOLATION"
+  },
+  {
+    "record_id": "CTP-COL-2026-000005-ANOM2",
+    "entity_type": "ContactAttempt",
+    "issue_type": "OUTSIDE_CONTACT_WINDOW",
+    "description": "Contact attempt occurred at 22:45, violating permissible window 09:00-18:00.",
+    "expected_action": "FLAG_COMPLIANCE_VIOLATION"
+  },
+  {
+    "record_id": "CTP-COL-2026-000008-ANOM2",
+    "entity_type": "ContactAttempt",
+    "issue_type": "OUTSIDE_CONTACT_WINDOW",
+    "description": "Contact attempt occurred at 22:45, violating permissible window 09:00-18:00.",
+    "expected_action": "FLAG_COMPLIANCE_VIOLATION"
+  },
+  {
+    "record_id": "CTP-COL-2026-000009-ANOM2",
+    "entity_type": "ContactAttempt",
+    "issue_type": "OUTSIDE_CONTACT_WINDOW",
+    "description": "Contact attempt occurred at 22:45, violating permissible window 09:00-18:00.",
+    "expected_action": "FLAG_COMPLIANCE_VIOLATION"
+  },
+  {
+    "record_id": "CTP-COL-2026-000010-ANOM2",
+    "entity_type": "ContactAttempt",
+    "issue_type": "OUTSIDE_CONTACT_WINDOW",
+    "description": "Contact attempt occurred at 22:45, violating permissible window 09:00-18:00.",
+    "expected_action": "FLAG_COMPLIANCE_VIOLATION"
+  },
+  {
+    "record_id": "CTP-COL-2026-000012-ANOM2",
+    "entity_type": "ContactAttempt",
+    "issue_type": "OUTSIDE_CONTACT_WINDOW",
+    "description": "Contact attempt occurred at 22:45, violating permissible window 09:00-18:00.",
+    "expected_action": "FLAG_COMPLIANCE_VIOLATION"
+  },
+  {
+    "record_id": "CTP-COL-2026-000013-ANOM2",
+    "entity_type": "ContactAttempt",
+    "issue_type": "OUTSIDE_CONTACT_WINDOW",
+    "description": "Contact attempt occurred at 22:45, violating permissible window 09:00-18:00.",
+    "expected_action": "FLAG_COMPLIANCE_VIOLATION"
+  },
+  {
+    "record_id": "CTP-COL-2026-000014-ANOM2",
+    "entity_type": "ContactAttempt",
+    "issue_type": "OUTSIDE_CONTACT_WINDOW",
+    "description": "Contact attempt occurred at 22:45, violating permissible window 09:00-18:00.",
+    "expected_action": "FLAG_COMPLIANCE_VIOLATION"
+  },
+  {
+    "record_id": "CTP-COL-2026-000015-ANOM2",
+    "entity_type": "ContactAttempt",
+    "issue_type": "OUTSIDE_CONTACT_WINDOW",
+    "description": "Contact attempt occurred at 22:45, violating permissible window 09:00-18:00.",
+    "expected_action": "FLAG_COMPLIANCE_VIOLATION"
+  },
+  {
+    "record_id": "CTP-COL-2026-000016-ANOM2",
+    "entity_type": "ContactAttempt",
+    "issue_type": "OUTSIDE_CONTACT_WINDOW",
+    "description": "Contact attempt occurred at 22:45, violating permissible window 09:00-18:00.",
+    "expected_action": "FLAG_COMPLIANCE_VIOLATION"
+  },
+  {
+    "record_id": "CTP-COL-2026-000020-ANOM2",
+    "entity_type": "ContactAttempt",
+    "issue_type": "OUTSIDE_CONTACT_WINDOW",
+    "description": "Contact attempt occurred at 22:45, violating permissible window 09:00-18:00.",
+    "expected_action": "FLAG_COMPLIANCE_VIOLATION"
+  },
+  {
+    "record_id": "CTP-COL-2026-000022-ANOM2",
+    "entity_type": "ContactAttempt",
+    "issue_type": "OUTSIDE_CONTACT_WINDOW",
+    "description": "Contact attempt occurred at 22:45, violating permissible window 09:00-18:00.",
+    "expected_action": "FLAG_COMPLIANCE_VIOLATION"
+  },
+  {
+    "record_id": "CTP-COL-2026-000025-ANOM2",
+    "entity_type": "ContactAttempt",
+    "issue_type": "OUTSIDE_CONTACT_WINDOW",
+    "description": "Contact attempt occurred at 22:45, violating permissible window 09:00-18:00.",
+    "expected_action": "FLAG_COMPLIANCE_VIOLATION"
+  },
+  {
+    "record_id": "CTP-COL-2026-000027-ANOM2",
+    "entity_type": "ContactAttempt",
+    "issue_type": "OUTSIDE_CONTACT_WINDOW",
+    "description": "Contact attempt occurred at 22:45, violating permissible window 09:00-18:00.",
+    "expected_action": "FLAG_COMPLIANCE_VIOLATION"
+  },
+  {
+    "record_id": "CTP-COL-2026-000028-ANOM2",
+    "entity_type": "ContactAttempt",
+    "issue_type": "OUTSIDE_CONTACT_WINDOW",
+    "description": "Contact attempt occurred at 22:45, violating permissible window 09:00-18:00.",
+    "expected_action": "FLAG_COMPLIANCE_VIOLATION"
+  },
+  {
+    "record_id": "CTP-COL-2026-000029-ANOM2",
+    "entity_type": "ContactAttempt",
+    "issue_type": "OUTSIDE_CONTACT_WINDOW",
+    "description": "Contact attempt occurred at 22:45, violating permissible window 09:00-18:00.",
+    "expected_action": "FLAG_COMPLIANCE_VIOLATION"
+  },
+  {
+    "record_id": "CTP-COL-2026-000030-ANOM2",
+    "entity_type": "ContactAttempt",
+    "issue_type": "OUTSIDE_CONTACT_WINDOW",
+    "description": "Contact attempt occurred at 22:45, violating permissible window 09:00-18:00.",
+    "expected_action": "FLAG_COMPLIANCE_VIOLATION"
+  },
+  {
+    "record_id": "CTP-COL-2026-000031-ANOM2",
+    "entity_type": "ContactAttempt",
+    "issue_type": "OUTSIDE_CONTACT_WINDOW",
+    "description": "Contact attempt occurred at 22:45, violating permissible window 09:00-18:00.",
+    "expected_action": "FLAG_COMPLIANCE_VIOLATION"
+  },
+  {
+    "record_id": "CTP-COL-2026-000032-ANOM2",
+    "entity_type": "ContactAttempt",
+    "issue_type": "OUTSIDE_CONTACT_WINDOW",
+    "description": "Contact attempt occurred at 22:45, violating permissible window 09:00-18:00.",
+    "expected_action": "FLAG_COMPLIANCE_VIOLATION"
+  },
+  {
+    "record_id": "ALC-ANOM3-0001",
+    "entity_type": "PaymentAllocation",
+    "issue_type": "WRONG_INSTALLMENT_ALLOCATION",
+    "description": "Payment PMT-2026-000001 for Loan LOAN-2026-000001 allocated to Installment INS-LOAN-2026-000002-001 belonging to Loan LOAN-2026-000002.",
+    "expected_action": "REJECT_ALLOCATION_MISMATCH"
+  },
+  {
+    "record_id": "ALC-ANOM3-0002",
+    "entity_type": "PaymentAllocation",
+    "issue_type": "WRONG_INSTALLMENT_ALLOCATION",
+    "description": "Payment PMT-2026-000002 for Loan LOAN-2026-000001 allocated to Installment INS-LOAN-2026-000002-001 belonging to Loan LOAN-2026-000002.",
+    "expected_action": "REJECT_ALLOCATION_MISMATCH"
+  },
+  {
+    "record_id": "ALC-ANOM3-0003",
+    "entity_type": "PaymentAllocation",
+    "issue_type": "WRONG_INSTALLMENT_ALLOCATION",
+    "description": "Payment PMT-2026-000003 for Loan LOAN-2026-000001 allocated to Installment INS-LOAN-2026-000002-001 belonging to Loan LOAN-2026-000002.",
+    "expected_action": "REJECT_ALLOCATION_MISMATCH"
+  },
+  {
+    "record_id": "ALC-ANOM3-0004",
+    "entity_type": "PaymentAllocation",
+    "issue_type": "WRONG_INSTALLMENT_ALLOCATION",
+    "description": "Payment PMT-2026-000004 for Loan LOAN-2026-000002 allocated to Installment INS-LOAN-2026-000001-001 belonging to Loan LOAN-2026-000001.",
+    "expected_action": "REJECT_ALLOCATION_MISMATCH"
+  },
+  {
+    "record_id": "ALC-ANOM3-0005",
+    "entity_type": "PaymentAllocation",
+    "issue_type": "WRONG_INSTALLMENT_ALLOCATION",
+    "description": "Payment PMT-2026-000005 for Loan LOAN-2026-000002 allocated to Installment INS-LOAN-2026-000001-001 belonging to Loan LOAN-2026-000001.",
+    "expected_action": "REJECT_ALLOCATION_MISMATCH"
+  },
+  {
+    "record_id": "ALC-ANOM3-0006",
+    "entity_type": "PaymentAllocation",
+    "issue_type": "WRONG_INSTALLMENT_ALLOCATION",
+    "description": "Payment PMT-2026-000006 for Loan LOAN-2026-000002 allocated to Installment INS-LOAN-2026-000001-001 belonging to Loan LOAN-2026-000001.",
+    "expected_action": "REJECT_ALLOCATION_MISMATCH"
+  },
+  {
+    "record_id": "ALC-ANOM3-0007",
+    "entity_type": "PaymentAllocation",
+    "issue_type": "WRONG_INSTALLMENT_ALLOCATION",
+    "description": "Payment PMT-2026-000007 for Loan LOAN-2026-000003 allocated to Installment INS-LOAN-2026-000001-001 belonging to Loan LOAN-2026-000001.",
+    "expected_action": "REJECT_ALLOCATION_MISMATCH"
+  },
+  {
+    "record_id": "ALC-ANOM3-0008",
+    "entity_type": "PaymentAllocation",
+    "issue_type": "WRONG_INSTALLMENT_ALLOCATION",
+    "description": "Payment PMT-2026-000008 for Loan LOAN-2026-000003 allocated to Installment INS-LOAN-2026-000001-001 belonging to Loan LOAN-2026-000001.",
+    "expected_action": "REJECT_ALLOCATION_MISMATCH"
+  },
+  {
+    "record_id": "ALC-ANOM3-0009",
+    "entity_type": "PaymentAllocation",
+    "issue_type": "WRONG_INSTALLMENT_ALLOCATION",
+    "description": "Payment PMT-2026-000009 for Loan LOAN-2026-000003 allocated to Installment INS-LOAN-2026-000001-001 belonging to Loan LOAN-2026-000001.",
+    "expected_action": "REJECT_ALLOCATION_MISMATCH"
+  },
+  {
+    "record_id": "ALC-ANOM3-0010",
+    "entity_type": "PaymentAllocation",
+    "issue_type": "WRONG_INSTALLMENT_ALLOCATION",
+    "description": "Payment PMT-2026-000010 for Loan LOAN-2026-000004 allocated to Installment INS-LOAN-2026-000001-001 belonging to Loan LOAN-2026-000001.",
+    "expected_action": "REJECT_ALLOCATION_MISMATCH"
+  },
+  {
+    "record_id": "ALC-ANOM3-0011",
+    "entity_type": "PaymentAllocation",
+    "issue_type": "WRONG_INSTALLMENT_ALLOCATION",
+    "description": "Payment PMT-2026-000011 for Loan LOAN-2026-000004 allocated to Installment INS-LOAN-2026-000001-001 belonging to Loan LOAN-2026-000001.",
+    "expected_action": "REJECT_ALLOCATION_MISMATCH"
+  },
+  {
+    "record_id": "ALC-ANOM3-0012",
+    "entity_type": "PaymentAllocation",
+    "issue_type": "WRONG_INSTALLMENT_ALLOCATION",
+    "description": "Payment PMT-2026-000012 for Loan LOAN-2026-000004 allocated to Installment INS-LOAN-2026-000001-001 belonging to Loan LOAN-2026-000001.",
+    "expected_action": "REJECT_ALLOCATION_MISMATCH"
+  },
+  {
+    "record_id": "ALC-ANOM3-0013",
+    "entity_type": "PaymentAllocation",
+    "issue_type": "WRONG_INSTALLMENT_ALLOCATION",
+    "description": "Payment PMT-2026-000013 for Loan LOAN-2026-000005 allocated to Installment INS-LOAN-2026-000001-001 belonging to Loan LOAN-2026-000001.",
+    "expected_action": "REJECT_ALLOCATION_MISMATCH"
+  },
+  {
+    "record_id": "ALC-ANOM3-0014",
+    "entity_type": "PaymentAllocation",
+    "issue_type": "WRONG_INSTALLMENT_ALLOCATION",
+    "description": "Payment PMT-2026-000014 for Loan LOAN-2026-000005 allocated to Installment INS-LOAN-2026-000001-001 belonging to Loan LOAN-2026-000001.",
+    "expected_action": "REJECT_ALLOCATION_MISMATCH"
+  },
+  {
+    "record_id": "ALC-ANOM3-0015",
+    "entity_type": "PaymentAllocation",
+    "issue_type": "WRONG_INSTALLMENT_ALLOCATION",
+    "description": "Payment PMT-2026-000015 for Loan LOAN-2026-000005 allocated to Installment INS-LOAN-2026-000001-001 belonging to Loan LOAN-2026-000001.",
+    "expected_action": "REJECT_ALLOCATION_MISMATCH"
+  },
+  {
+    "record_id": "ALC-ANOM3-0016",
+    "entity_type": "PaymentAllocation",
+    "issue_type": "WRONG_INSTALLMENT_ALLOCATION",
+    "description": "Payment PMT-2026-000016 for Loan LOAN-2026-000006 allocated to Installment INS-LOAN-2026-000001-001 belonging to Loan LOAN-2026-000001.",
+    "expected_action": "REJECT_ALLOCATION_MISMATCH"
+  },
+  {
+    "record_id": "ALC-ANOM3-0017",
+    "entity_type": "PaymentAllocation",
+    "issue_type": "WRONG_INSTALLMENT_ALLOCATION",
+    "description": "Payment PMT-2026-000017 for Loan LOAN-2026-000006 allocated to Installment INS-LOAN-2026-000001-001 belonging to Loan LOAN-2026-000001.",
+    "expected_action": "REJECT_ALLOCATION_MISMATCH"
+  },
+  {
+    "record_id": "ALC-ANOM3-0018",
+    "entity_type": "PaymentAllocation",
+    "issue_type": "WRONG_INSTALLMENT_ALLOCATION",
+    "description": "Payment PMT-2026-000018 for Loan LOAN-2026-000006 allocated to Installment INS-LOAN-2026-000001-001 belonging to Loan LOAN-2026-000001.",
+    "expected_action": "REJECT_ALLOCATION_MISMATCH"
+  },
+  {
+    "record_id": "ALC-ANOM3-0019",
+    "entity_type": "PaymentAllocation",
+    "issue_type": "WRONG_INSTALLMENT_ALLOCATION",
+    "description": "Payment PMT-2026-000019 for Loan LOAN-2026-000007 allocated to Installment INS-LOAN-2026-000001-001 belonging to Loan LOAN-2026-000001.",
+    "expected_action": "REJECT_ALLOCATION_MISMATCH"
+  },
+  {
+    "record_id": "ALC-ANOM3-0020",
+    "entity_type": "PaymentAllocation",
+    "issue_type": "WRONG_INSTALLMENT_ALLOCATION",
+    "description": "Payment PMT-2026-000020 for Loan LOAN-2026-000007 allocated to Installment INS-LOAN-2026-000001-001 belonging to Loan LOAN-2026-000001.",
+    "expected_action": "REJECT_ALLOCATION_MISMATCH"
+  },
+  {
+    "record_id": "PRM-COL-2026-000001-ANOM4",
+    "entity_type": "PromiseToPay",
+    "issue_type": "PROMISE_EXCEEDS_ARREARS",
+    "description": "Promised amount \u20b91,197,291.62 exceeds outstanding arrears \u20b9342,083.32 by >250%.",
+    "expected_action": "FLAG_INVALID_COMMITMENT"
+  },
+  {
+    "record_id": "PRM-COL-2026-000002-ANOM4",
+    "entity_type": "PromiseToPay",
+    "issue_type": "PROMISE_EXCEEDS_ARREARS",
+    "description": "Promised amount \u20b9300,416.62 exceeds outstanding arrears \u20b985,833.32 by >250%.",
+    "expected_action": "FLAG_INVALID_COMMITMENT"
+  },
+  {
+    "record_id": "PRM-COL-2026-000003-ANOM4",
+    "entity_type": "PromiseToPay",
+    "issue_type": "PROMISE_EXCEEDS_ARREARS",
+    "description": "Promised amount \u20b9108,150.00 exceeds outstanding arrears \u20b930,900.00 by >250%.",
+    "expected_action": "FLAG_INVALID_COMMITMENT"
+  },
+  {
+    "record_id": "PRM-COL-2026-000004-ANOM4",
+    "entity_type": "PromiseToPay",
+    "issue_type": "PROMISE_EXCEEDS_ARREARS",
+    "description": "Promised amount \u20b97,451,171.88 exceeds outstanding arrears \u20b92,128,906.25 by >250%.",
+    "expected_action": "FLAG_INVALID_COMMITMENT"
+  },
+  {
+    "record_id": "PRM-COL-2026-000005-ANOM4",
+    "entity_type": "PromiseToPay",
+    "issue_type": "PROMISE_EXCEEDS_ARREARS",
+    "description": "Promised amount \u20b9452,812.50 exceeds outstanding arrears \u20b9129,375.00 by >250%.",
+    "expected_action": "FLAG_INVALID_COMMITMENT"
+  },
+  {
+    "record_id": "PRM-COL-2026-000006-ANOM4",
+    "entity_type": "PromiseToPay",
+    "issue_type": "PROMISE_EXCEEDS_ARREARS",
+    "description": "Promised amount \u20b9265,329.16 exceeds outstanding arrears \u20b975,808.33 by >250%.",
+    "expected_action": "FLAG_INVALID_COMMITMENT"
+  },
+  {
+    "record_id": "PRM-COL-2026-000007-ANOM4",
+    "entity_type": "PromiseToPay",
+    "issue_type": "PROMISE_EXCEEDS_ARREARS",
+    "description": "Promised amount \u20b9361,812.46 exceeds outstanding arrears \u20b9103,374.99 by >250%.",
+    "expected_action": "FLAG_INVALID_COMMITMENT"
+  },
+  {
+    "record_id": "PRM-COL-2026-000008-ANOM4",
+    "entity_type": "PromiseToPay",
+    "issue_type": "PROMISE_EXCEEDS_ARREARS",
+    "description": "Promised amount \u20b98,930,468.72 exceeds outstanding arrears \u20b92,551,562.49 by >250%.",
+    "expected_action": "FLAG_INVALID_COMMITMENT"
+  },
+  {
+    "record_id": "PRM-COL-2026-000009-ANOM4",
+    "entity_type": "PromiseToPay",
+    "issue_type": "PROMISE_EXCEEDS_ARREARS",
+    "description": "Promised amount \u20b92,420,833.34 exceeds outstanding arrears \u20b9691,666.67 by >250%.",
+    "expected_action": "FLAG_INVALID_COMMITMENT"
+  },
+  {
+    "record_id": "PRM-COL-2026-000010-ANOM4",
+    "entity_type": "PromiseToPay",
+    "issue_type": "PROMISE_EXCEEDS_ARREARS",
+    "description": "Promised amount \u20b92,147,250.00 exceeds outstanding arrears \u20b9613,500.00 by >250%.",
+    "expected_action": "FLAG_INVALID_COMMITMENT"
+  },
+  {
+    "record_id": "PRM-COL-2026-000011-ANOM4",
+    "entity_type": "PromiseToPay",
+    "issue_type": "PROMISE_EXCEEDS_ARREARS",
+    "description": "Promised amount \u20b97,451,171.88 exceeds outstanding arrears \u20b92,128,906.25 by >250%.",
+    "expected_action": "FLAG_INVALID_COMMITMENT"
+  },
+  {
+    "record_id": "PRM-COL-2026-000012-ANOM4",
+    "entity_type": "PromiseToPay",
+    "issue_type": "PROMISE_EXCEEDS_ARREARS",
+    "description": "Promised amount \u20b94,331,250.00 exceeds outstanding arrears \u20b91,237,500.00 by >250%.",
+    "expected_action": "FLAG_INVALID_COMMITMENT"
+  },
+  {
+    "record_id": "PRM-COL-2026-000013-ANOM4",
+    "entity_type": "PromiseToPay",
+    "issue_type": "PROMISE_EXCEEDS_ARREARS",
+    "description": "Promised amount \u20b9894,687.46 exceeds outstanding arrears \u20b9255,624.99 by >250%.",
+    "expected_action": "FLAG_INVALID_COMMITMENT"
+  },
+  {
+    "record_id": "PRM-COL-2026-000014-ANOM4",
+    "entity_type": "PromiseToPay",
+    "issue_type": "PROMISE_EXCEEDS_ARREARS",
+    "description": "Promised amount \u20b92,406,250.00 exceeds outstanding arrears \u20b9687,500.00 by >250%.",
+    "expected_action": "FLAG_INVALID_COMMITMENT"
+  },
+  {
+    "record_id": "PRM-COL-2026-000015-ANOM4",
+    "entity_type": "PromiseToPay",
+    "issue_type": "PROMISE_EXCEEDS_ARREARS",
+    "description": "Promised amount \u20b91,811,250.00 exceeds outstanding arrears \u20b9517,500.00 by >250%.",
+    "expected_action": "FLAG_INVALID_COMMITMENT"
+  },
+  {
+    "record_id": "PRM-COL-2026-000016-ANOM4",
+    "entity_type": "PromiseToPay",
+    "issue_type": "PROMISE_EXCEEDS_ARREARS",
+    "description": "Promised amount \u20b93,572,187.46 exceeds outstanding arrears \u20b91,020,624.99 by >250%.",
+    "expected_action": "FLAG_INVALID_COMMITMENT"
+  },
+  {
+    "record_id": "PRM-COL-2026-000017-ANOM4",
+    "entity_type": "PromiseToPay",
+    "issue_type": "PROMISE_EXCEEDS_ARREARS",
+    "description": "Promised amount \u20b93,934,218.75 exceeds outstanding arrears \u20b91,124,062.50 by >250%.",
+    "expected_action": "FLAG_INVALID_COMMITMENT"
+  },
+  {
+    "record_id": "PRM-COL-2026-000018-ANOM4",
+    "entity_type": "PromiseToPay",
+    "issue_type": "PROMISE_EXCEEDS_ARREARS",
+    "description": "Promised amount \u20b91,086,750.00 exceeds outstanding arrears \u20b9310,500.00 by >250%.",
+    "expected_action": "FLAG_INVALID_COMMITMENT"
+  },
+  {
+    "record_id": "PRM-COL-2026-000019-ANOM4",
+    "entity_type": "PromiseToPay",
+    "issue_type": "PROMISE_EXCEEDS_ARREARS",
+    "description": "Promised amount \u20b92,980,468.75 exceeds outstanding arrears \u20b9851,562.50 by >250%.",
+    "expected_action": "FLAG_INVALID_COMMITMENT"
+  },
+  {
+    "record_id": "PRM-COL-2026-000020-ANOM4",
+    "entity_type": "PromiseToPay",
+    "issue_type": "PROMISE_EXCEEDS_ARREARS",
+    "description": "Promised amount \u20b94,331,250.00 exceeds outstanding arrears \u20b91,237,500.00 by >250%.",
+    "expected_action": "FLAG_INVALID_COMMITMENT"
+  },
+  {
+    "record_id": "COL-2026-000002",
+    "entity_type": "CollectionCase",
+    "issue_type": "DISPUTED_DEBT_TREATED_CONFIRMED",
+    "description": "Loan LOAN-2026-000010 has OPEN dispute, but case is marked CONTACT_SCHEDULED instead of DISPUTE_HOLD.",
+    "expected_action": "ROUTE_DISPUTE_REVIEW"
+  },
+  {
+    "record_id": "COL-2026-000007",
+    "entity_type": "CollectionCase",
+    "issue_type": "DISPUTED_DEBT_TREATED_CONFIRMED",
+    "description": "Loan LOAN-2026-000027 has OPEN dispute, but case is marked CONTACT_SCHEDULED instead of DISPUTE_HOLD.",
+    "expected_action": "ROUTE_DISPUTE_REVIEW"
+  },
+  {
+    "record_id": "COL-2026-000011",
+    "entity_type": "CollectionCase",
+    "issue_type": "DISPUTED_DEBT_TREATED_CONFIRMED",
+    "description": "Loan LOAN-2026-000035 has OPEN dispute, but case is marked CONTACT_SCHEDULED instead of DISPUTE_HOLD.",
+    "expected_action": "ROUTE_DISPUTE_REVIEW"
+  },
+  {
+    "record_id": "COL-2026-000019",
+    "entity_type": "CollectionCase",
+    "issue_type": "DISPUTED_DEBT_TREATED_CONFIRMED",
+    "description": "Loan LOAN-2026-000055 has OPEN dispute, but case is marked CONTACT_SCHEDULED instead of DISPUTE_HOLD.",
+    "expected_action": "ROUTE_DISPUTE_REVIEW"
+  },
+  {
+    "record_id": "COL-2026-000023",
+    "entity_type": "CollectionCase",
+    "issue_type": "DISPUTED_DEBT_TREATED_CONFIRMED",
+    "description": "Loan LOAN-2026-000067 has OPEN dispute, but case is marked CONTACT_SCHEDULED instead of DISPUTE_HOLD.",
+    "expected_action": "ROUTE_DISPUTE_REVIEW"
+  },
+  {
+    "record_id": "COL-2026-000026",
+    "entity_type": "CollectionCase",
+    "issue_type": "DISPUTED_DEBT_TREATED_CONFIRMED",
+    "description": "Loan LOAN-2026-000072 has OPEN dispute, but case is marked CONTACT_SCHEDULED instead of DISPUTE_HOLD.",
+    "expected_action": "ROUTE_DISPUTE_REVIEW"
+  },
+  {
+    "record_id": "COL-2026-000035",
+    "entity_type": "CollectionCase",
+    "issue_type": "DISPUTED_DEBT_TREATED_CONFIRMED",
+    "description": "Loan LOAN-2026-000090 has OPEN dispute, but case is marked CONTACT_SCHEDULED instead of DISPUTE_HOLD.",
+    "expected_action": "ROUTE_DISPUTE_REVIEW"
+  },
+  {
+    "record_id": "COL-2026-000040",
+    "entity_type": "CollectionCase",
+    "issue_type": "DISPUTED_DEBT_TREATED_CONFIRMED",
+    "description": "Loan LOAN-2026-000099 has OPEN dispute, but case is marked CONTACT_SCHEDULED instead of DISPUTE_HOLD.",
+    "expected_action": "ROUTE_DISPUTE_REVIEW"
+  },
+  {
+    "record_id": "COL-2026-000041",
+    "entity_type": "CollectionCase",
+    "issue_type": "DISPUTED_DEBT_TREATED_CONFIRMED",
+    "description": "Loan LOAN-2026-000103 has OPEN dispute, but case is marked CONTACT_SCHEDULED instead of DISPUTE_HOLD.",
+    "expected_action": "ROUTE_DISPUTE_REVIEW"
+  },
+  {
+    "record_id": "COL-2026-000042",
+    "entity_type": "CollectionCase",
+    "issue_type": "DISPUTED_DEBT_TREATED_CONFIRMED",
+    "description": "Loan LOAN-2026-000104 has OPEN dispute, but case is marked CONTACT_SCHEDULED instead of DISPUTE_HOLD.",
+    "expected_action": "ROUTE_DISPUTE_REVIEW"
+  },
+  {
+    "record_id": "COL-2026-000048",
+    "entity_type": "CollectionCase",
+    "issue_type": "DISPUTED_DEBT_TREATED_CONFIRMED",
+    "description": "Loan LOAN-2026-000131 has OPEN dispute, but case is marked CONTACT_SCHEDULED instead of DISPUTE_HOLD.",
+    "expected_action": "ROUTE_DISPUTE_REVIEW"
+  },
+  {
+    "record_id": "COL-2026-000049",
+    "entity_type": "CollectionCase",
+    "issue_type": "DISPUTED_DEBT_TREATED_CONFIRMED",
+    "description": "Loan LOAN-2026-000134 has OPEN dispute, but case is marked CONTACT_SCHEDULED instead of DISPUTE_HOLD.",
+    "expected_action": "ROUTE_DISPUTE_REVIEW"
+  },
+  {
+    "record_id": "COL-2026-000050",
+    "entity_type": "CollectionCase",
+    "issue_type": "DISPUTED_DEBT_TREATED_CONFIRMED",
+    "description": "Loan LOAN-2026-000138 has OPEN dispute, but case is marked CONTACT_SCHEDULED instead of DISPUTE_HOLD.",
+    "expected_action": "ROUTE_DISPUTE_REVIEW"
+  },
+  {
+    "record_id": "COL-2026-000058",
+    "entity_type": "CollectionCase",
+    "issue_type": "DISPUTED_DEBT_TREATED_CONFIRMED",
+    "description": "Loan LOAN-2026-000160 has OPEN dispute, but case is marked CONTACT_SCHEDULED instead of DISPUTE_HOLD.",
+    "expected_action": "ROUTE_DISPUTE_REVIEW"
+  },
+  {
+    "record_id": "COL-2026-000060",
+    "entity_type": "CollectionCase",
+    "issue_type": "DISPUTED_DEBT_TREATED_CONFIRMED",
+    "description": "Loan LOAN-2026-000166 has OPEN dispute, but case is marked CONTACT_SCHEDULED instead of DISPUTE_HOLD.",
+    "expected_action": "ROUTE_DISPUTE_REVIEW"
+  },
+  {
+    "record_id": "COL-2026-000065",
+    "entity_type": "CollectionCase",
+    "issue_type": "DISPUTED_DEBT_TREATED_CONFIRMED",
+    "description": "Loan LOAN-2026-000178 has OPEN dispute, but case is marked CONTACT_SCHEDULED instead of DISPUTE_HOLD.",
+    "expected_action": "ROUTE_DISPUTE_REVIEW"
+  },
+  {
+    "record_id": "COL-2026-000068",
+    "entity_type": "CollectionCase",
+    "issue_type": "DISPUTED_DEBT_TREATED_CONFIRMED",
+    "description": "Loan LOAN-2026-000184 has OPEN dispute, but case is marked CONTACT_SCHEDULED instead of DISPUTE_HOLD.",
+    "expected_action": "ROUTE_DISPUTE_REVIEW"
+  },
+  {
+    "record_id": "COL-2026-000074",
+    "entity_type": "CollectionCase",
+    "issue_type": "DISPUTED_DEBT_TREATED_CONFIRMED",
+    "description": "Loan LOAN-2026-000203 has OPEN dispute, but case is marked CONTACT_SCHEDULED instead of DISPUTE_HOLD.",
+    "expected_action": "ROUTE_DISPUTE_REVIEW"
+  },
+  {
+    "record_id": "COL-2026-000084",
+    "entity_type": "CollectionCase",
+    "issue_type": "DISPUTED_DEBT_TREATED_CONFIRMED",
+    "description": "Loan LOAN-2026-000224 has OPEN dispute, but case is marked CONTACT_SCHEDULED instead of DISPUTE_HOLD.",
+    "expected_action": "ROUTE_DISPUTE_REVIEW"
+  },
+  {
+    "record_id": "COL-2026-000088",
+    "entity_type": "CollectionCase",
+    "issue_type": "DISPUTED_DEBT_TREATED_CONFIRMED",
+    "description": "Loan LOAN-2026-000240 has OPEN dispute, but case is marked CONTACT_SCHEDULED instead of DISPUTE_HOLD.",
+    "expected_action": "ROUTE_DISPUTE_REVIEW"
+  }
+]
