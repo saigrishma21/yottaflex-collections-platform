@@ -146,6 +146,7 @@ export default function App() {
                 setSearchQuery={setSearchQuery}
                 loading={loadingCases}
                 onRefresh={loadCases}
+                priorityDistribution={metrics?.priority_distribution}
               />
             </div>
           </div>
@@ -174,6 +175,7 @@ export default function App() {
               setSearchQuery={setSearchQuery}
               loading={loadingCases}
               onRefresh={loadCases}
+              priorityDistribution={metrics?.priority_distribution}
             />
           </div>
         )}

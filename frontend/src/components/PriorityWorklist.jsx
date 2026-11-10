@@ -11,8 +11,22 @@ export default function PriorityWorklist({
   setSearchQuery,
   loading,
   onRefresh,
+  priorityDistribution = [],
 }) {
-  const priorityFilters = ['ALL', 'CRITICAL', 'HIGH', 'MEDIUM', 'LOW'];
+  const countMap = {};
+  if (Array.isArray(priorityDistribution)) {
+    priorityDistribution.forEach((d) => {
+      countMap[d.level] = d.count;
+    });
+  }
+
+  const priorityFilters = [
+    { id: 'ALL', label: 'ALL' },
+    { id: 'CRITICAL', label: 'CRITICAL', count: countMap['CRITICAL'] },
+    { id: 'HIGH', label: 'HIGH', count: countMap['HIGH'] },
+    { id: 'MEDIUM', label: 'MEDIUM', count: countMap['MEDIUM'] },
+    { id: 'LOW', label: 'LOW', count: countMap['LOW'] },
+  ];
 
   return (
     <div className="bg-white rounded-xl border border-slate-200 shadow-sm overflow-hidden">
@@ -22,18 +36,29 @@ export default function PriorityWorklist({
         <div className="flex items-center space-x-1.5 overflow-x-auto">
           <span className="text-xs font-bold text-slate-500 uppercase mr-1">Tier:</span>
           {priorityFilters.map((p) => {
-            const isSelected = selectedPriority === p;
+            const isSelected = selectedPriority === p.id;
             return (
               <button
-                key={p}
-                onClick={() => setSelectedPriority(p)}
-                className={`px-3 py-1 rounded-lg text-xs font-bold transition-all ${
+                key={p.id}
+                onClick={() => setSelectedPriority(p.id)}
+                className={`px-3 py-1 rounded-lg text-xs font-bold transition-all flex items-center space-x-1.5 ${
                   isSelected
                     ? 'bg-slate-900 text-white shadow-2xs'
                     : 'bg-white text-slate-600 hover:bg-slate-200 border border-slate-200'
                 }`}
               >
-                {p}
+                <span>{p.label}</span>
+                {p.count !== undefined && (
+                  <span
+                    className={`text-[10px] px-1.5 py-0.5 rounded-full font-medium ${
+                      isSelected
+                        ? 'bg-slate-700 text-slate-200'
+                        : 'bg-slate-100 text-slate-500'
+                    }`}
+                  >
+                    {p.count.toLocaleString()}
+                  </span>
+                )}
               </button>
             );
           })}
@@ -60,6 +85,14 @@ export default function PriorityWorklist({
               <RefreshCw className={`w-4 h-4 ${loading ? 'animate-spin' : ''}`} />
             </button>
           )}
+        </div>
+      </div>
+
+      {/* Informative Queue Subtitle */}
+      <div className="px-4 py-2 bg-slate-50/75 border-b border-slate-200 flex items-center justify-between text-[11px] text-slate-500">
+        <div>
+          Showing {cases.length} accounts ranked by explainable Priority Score (highest urgency first).
+          {selectedPriority === 'ALL' && ' Displaying top portfolio accounts. Click a tier above to inspect HIGH, MEDIUM, or LOW.'}
         </div>
       </div>
 
